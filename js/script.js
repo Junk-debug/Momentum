@@ -1,15 +1,10 @@
 const timeDiv = document.querySelector(".time");
 const dateDiv = document.querySelector(".date");
 
-const greetingContainer = document.querySelector(".greeting-container");
+const greetingDiv = document.querySelector(".greeting");
+const inputName = document.querySelector(".name");
 
-const greetingDiv = greetingContainer.querySelector(".greeting");
-const inputName = greetingContainer.querySelector(".name");
-
-const body = document.querySelector("body");
-
-const slideNext = document.querySelector('.slide-next');
-const slidePrev = document.querySelector('.slide-prev');
+const inputCity = document.querySelector(".city");
 
 function showTime() {
     const date = new Date();
@@ -57,18 +52,29 @@ showTime();
 
 function setLocalStorage() {
     localStorage.setItem("name", inputName.value);
+    localStorage.setItem("city", inputCity.value)
 }
 
 function getLocalStorage() {
     const nameFromLS = localStorage.getItem("name");
-
-    if (nameFromLS !== null) {
+    const cityFromLS = localStorage.getItem("city");
+    if (nameFromLS !== null && nameFromLS !== '') {
         inputName.value = nameFromLS;
+    }
+    if (cityFromLS !== null && cityFromLS !== '') {
+        inputCity.value = cityFromLS;
     }
 }
 
 window.addEventListener("load", getLocalStorage);
 window.addEventListener("beforeunload", setLocalStorage);
+
+
+
+const body = document.querySelector("body");
+
+const slideNext = document.querySelector('.slide-next');
+const slidePrev = document.querySelector('.slide-prev');
 
 let randomNum;
 getRandomNum(1, 20);
@@ -108,3 +114,29 @@ function getSlidePrev() {
 
 slideNext.addEventListener("click", getSlideNext);
 slidePrev.addEventListener("click", getSlidePrev);
+
+
+
+const weatherIcon = document.querySelector(".weather-icon");
+const temperature = document.querySelector(".temperature");
+const weatherDescription = document.querySelector(".weather-description");
+const wind = document.querySelector(".wind");
+const humidity = document.querySelector(".humidity");
+const weatherError = document.querySelector(".weather-error");
+
+async function getWeather() {
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputCity.value}&lang=en&appid=b1201d454068452807855ae9447aa96e&units=metric`;
+    const res = await fetch(url);
+    const data = await res.json();
+
+    weatherIcon.className = "weather-icon owf";
+    weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+    temperature.textContent = `${data.main.temp}°C`;
+    weatherDescription.textContent = data.weather[0].description;
+    wind.textContent = `Wind speed: ${data.wind.speed} m/s`;
+    humidity.textContent = `Humidity: ${data.main.humidity} %`;
+}
+
+getWeather();
+
+inputCity.addEventListener("change", getWeather);
