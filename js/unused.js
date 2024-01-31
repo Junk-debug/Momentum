@@ -1,10 +1,6 @@
+// 1 show time and date
 const timeDiv = document.querySelector(".time");
 const dateDiv = document.querySelector(".date");
-
-const greetingDiv = document.querySelector(".greeting");
-const inputName = document.querySelector(".name");
-
-const inputCity = document.querySelector(".city");
 
 function showTime() {
     const date = new Date();
@@ -41,35 +37,17 @@ function getTimeOfDay() {
     }
 }
 
+// 2 show greeting
+const greetingDiv = document.querySelector(".greeting");
+const inputName = document.querySelector(".name");
+
 function showGreeting() {
     const date = new Date();
     const timeOfDay = getTimeOfDay();
     const greetingText = `Good ${timeOfDay},`;
     greetingDiv.textContent = greetingText;
 }
-
-showTime();
-
-function setLocalStorage() {
-    localStorage.setItem("name", inputName.value);
-    localStorage.setItem("city", inputCity.value)
-}
-
-function getLocalStorage() {
-    const nameFromLS = localStorage.getItem("name");
-    const cityFromLS = localStorage.getItem("city");
-    if (nameFromLS !== null && nameFromLS !== '') {
-        inputName.value = nameFromLS;
-    }
-    if (cityFromLS !== null && cityFromLS !== '') {
-        inputCity.value = cityFromLS;
-    }
-}
-
-window.addEventListener("load", getLocalStorage);
-window.addEventListener("beforeunload", setLocalStorage);
-
-
+// 3 slider logic
 
 const body = document.querySelector("body");
 
@@ -77,8 +55,6 @@ const slideNext = document.querySelector('.slide-next');
 const slidePrev = document.querySelector('.slide-prev');
 
 let randomNum;
-getRandomNum(1, 20);
-setBg();
 
 function getRandomNum(min, max) {
     min = Math.ceil(min);
@@ -112,31 +88,69 @@ function getSlidePrev() {
     setBg();
 }
 
-slideNext.addEventListener("click", getSlideNext);
-slidePrev.addEventListener("click", getSlidePrev);
 
-
-
+// 4  weather widget
 const weatherIcon = document.querySelector(".weather-icon");
 const temperature = document.querySelector(".temperature");
 const weatherDescription = document.querySelector(".weather-description");
 const wind = document.querySelector(".wind");
 const humidity = document.querySelector(".humidity");
+const inputCity = document.querySelector(".city");
 const weatherError = document.querySelector(".weather-error");
 
 async function getWeather() {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputCity.value}&lang=en&appid=b1201d454068452807855ae9447aa96e&units=metric`;
     const res = await fetch(url);
     const data = await res.json();
-
-    weatherIcon.className = "weather-icon owf";
-    weatherIcon.classList.add(`owf-${data.weather[0].id}`);
-    temperature.textContent = `${data.main.temp}°C`;
-    weatherDescription.textContent = data.weather[0].description;
-    wind.textContent = `Wind speed: ${data.wind.speed} m/s`;
-    humidity.textContent = `Humidity: ${data.main.humidity} %`;
+    if (data.cod == 404) {
+        weatherError.textContent = `Error: ${data.message} for '${inputCity.value}'!`;
+        weatherIcon.className = "weather-icon owf";
+        temperature.textContent = '';
+        weatherDescription.textContent = '';
+        wind.textContent = '';
+        humidity.textContent = '';
+    } else {
+        weatherError.textContent = '';
+        weatherIcon.className = "weather-icon owf";
+        weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+        temperature.textContent = `${data.main.temp}°C`;
+        weatherDescription.textContent = data.weather[0].description;
+        wind.textContent = `Wind speed: ${data.wind.speed} m/s`;
+        humidity.textContent = `Humidity: ${data.main.humidity} %`;
+    }
 }
 
-getWeather();
+// 5 localstorage
 
+
+function setLocalStorage() {
+    localStorage.setItem("name", inputName.value);
+    localStorage.setItem("city", inputCity.value)
+}
+
+function getLocalStorage() {
+    const nameFromLS = localStorage.getItem("name");
+    const cityFromLS = localStorage.getItem("city");
+    if (nameFromLS !== null && nameFromLS !== '') {
+        inputName.value = nameFromLS;
+    }
+    if (cityFromLS !== null && cityFromLS !== '') {
+        inputCity.value = cityFromLS;
+    }
+}
+
+// code 
+
+showTime();
+
+getRandomNum(1, 20);
+setBg();
+
+slideNext.addEventListener("click", getSlideNext);
+slidePrev.addEventListener("click", getSlidePrev);
+
+getWeather();
 inputCity.addEventListener("change", getWeather);
+
+window.addEventListener("beforeunload", setLocalStorage);
+window.addEventListener("load", getLocalStorage);
