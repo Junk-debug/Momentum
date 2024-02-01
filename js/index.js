@@ -1,8 +1,9 @@
 import { showTime } from './time.js';
 import { inputCity, getWeather } from './weather.js';
-import { slidePrev, slideNext, setRandomNum, getSlideNext, getSlidePrev, setBg } from './slider.js';
+import { prevSlideButton, nextSlideButton, setRandomNum, slideNext, slidePrev, setBg } from './slider.js';
 import { setLocalStorage, getLocalStorage } from './localStorage.js';
-import { setQuote, changeButton } from './quotes.js';
+import { setQuote, changeQuoteButton } from './quotes.js';
+import { playAudio, playAudioButton, createAudioList, playNext, playPrev, prevAudioButton, nextAudioButton } from './audio.js';
 
 // первый вызов цикличного счетчика времени
 showTime();
@@ -12,8 +13,8 @@ setRandomNum(1, 20);
 setBg();
 
 // управление кнопками слайдера
-slideNext.addEventListener("click", getSlideNext);
-slidePrev.addEventListener("click", getSlidePrev);
+nextSlideButton.addEventListener("click", slideNext);
+prevSlideButton.addEventListener("click", slidePrev);
 
 // первый запуск погоды и ожидание изменений
 getWeather();
@@ -25,4 +26,12 @@ window.addEventListener("load", getLocalStorage);
 
 // quotes
 setQuote();
-changeButton.addEventListener("click", setQuote);
+changeQuoteButton.addEventListener("click", setQuote);
+
+// audio
+createAudioList();
+
+playAudioButton.addEventListener("click", playAudio)
+
+nextAudioButton.addEventListener("click", playNext);
+prevAudioButton.addEventListener("click", playPrev)

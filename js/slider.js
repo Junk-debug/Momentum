@@ -1,7 +1,7 @@
 import { getTimeOfDay } from "./greeting.js";
 
-export const slideNext = document.querySelector('.slide-next');
-export const slidePrev = document.querySelector('.slide-prev');
+export const nextSlideButton = document.querySelector('.slide-next');
+export const prevSlideButton = document.querySelector('.slide-prev');
 
 let randomNum;
 
@@ -19,13 +19,13 @@ export function setBg() {
     const timeOfDay = getTimeOfDay();
     const bgNum = randomNum.toString().padStart(2, "0");
     const img = new Image();
-    img.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timeOfDay}/${bgNum}.jpg`;
+    img.src = `https://raw.githubusercontent.com/Junk-debug/stage1-tasks/assets/images/${timeOfDay}/${bgNum}.jpg`;
     img.onload = () => {
         document.body.style.backgroundImage = `url('${img.src}')`;
     };
 }
 
-export function getSlideNext() {
+export function slideNext() {
     randomNum++;
     if (randomNum > 20) {
         randomNum = 1;
@@ -33,7 +33,7 @@ export function getSlideNext() {
     setBg();
 }
 
-export function getSlidePrev() {
+export function slidePrev() {
     randomNum--;
     if (randomNum < 1) {
         randomNum = 20;

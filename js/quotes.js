@@ -3,7 +3,7 @@ import { getRandomNum } from "./slider.js";
 const quoteDiv = document.querySelector(".quote");
 const authorDiv = document.querySelector(".author");
 
-export const changeButton = document.querySelector(".change-quote");
+export const changeQuoteButton = document.querySelector(".change-quote");
 
 export async function setQuote() {
     const url = 'https://type.fit/api/quotes';
