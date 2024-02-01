@@ -8,7 +8,11 @@ let randomNum;
 export function getRandomNum(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
-    randomNum = Math.floor(Math.random() * (max - min + 1) + min);
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+export function setRandomNum(min, max) {
+    randomNum = getRandomNum(min, max);
 }
 
 export function setBg() {
