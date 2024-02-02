@@ -3,7 +3,7 @@ import { inputCity, getWeather } from './weather.js';
 import { prevSlideButton, nextSlideButton, setRandomNum, slideNext, slidePrev, setBg } from './slider.js';
 import { setLocalStorage, getLocalStorage } from './localStorage.js';
 import { setQuote, changeQuoteButton } from './quotes.js';
-import { playAudio, playAudioButton, createAudioList, playNext, playPrev, prevAudioButton, nextAudioButton } from './audio.js';
+import { playAudio, playAudioButton, createAudioList, playNext, playPrev, prevAudioButton, nextAudioButton, updateAudioTime } from './audio.js';
 
 // первый вызов цикличного счетчика времени
 showTime();
@@ -34,4 +34,6 @@ createAudioList();
 playAudioButton.addEventListener("click", playAudio)
 
 nextAudioButton.addEventListener("click", playNext);
-prevAudioButton.addEventListener("click", playPrev)
+prevAudioButton.addEventListener("click", playPrev);
+
+updateAudioTime();

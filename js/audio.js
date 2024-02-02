@@ -21,7 +21,8 @@ export function createAudioList() {
         li.addEventListener("click", () => {
             isPlay = false;
             playNum = li.value;
-            playAudio()
+            resetAudio()
+            playAudio();
         });
     }
 }
@@ -36,7 +37,6 @@ function updateAudioList() {
 }
 
 export function playAudio() {
-    audio.src = playList[playNum].src;
     if (isPlay) {
         playAudioButton.classList.remove("pause");
         audio.pause();
@@ -55,7 +55,8 @@ export function playNext() {
     if (playNum > 3) {
         playNum = 0;
     }
-    playAudio()
+    resetAudio()
+    playAudio();
 }
 
 export function playPrev() {
@@ -64,5 +65,46 @@ export function playPrev() {
     if (playNum < 0) {
         playNum = 3;
     }
-    playAudio()
+    resetAudio();
+    playAudio();
 }
+
+function resetAudio() {
+    progressBar.style.transition = "none";
+    progressBar.style.width = 0;
+    audio.src = playList[playNum].src;
+}
+
+const timeline = document.querySelector(".timeline");
+const progressBar = document.querySelector(".progress");
+
+const currentTimeSpan = document.querySelector(".audio-current");
+const endTimeSpan = document.querySelector(".audio-end");
+
+export function updateAudioTime() {
+    const currentTime = new Date(audio.currentTime * 1000);
+    const duration = new Date(audio.duration * 1000)
+
+    if (currentTime >= duration) {
+        playNext();
+    }
+
+    currentTimeSpan.textContent = `${currentTime.getMinutes().toString().padStart(2, "0")}:${currentTime.getSeconds().toString().padStart(2, "0")}`;
+    endTimeSpan.textContent = `${duration.getMinutes().toString().padStart(2, "0")}:${duration.getSeconds().toString().padStart(2, "0")}`
+
+    updateProgressBar();
+    setTimeout(updateAudioTime, 500);
+}
+
+function updateProgressBar() {
+    progressBar.style.transition = "2s ease-out width";
+    progressBar.style.width = audio.currentTime / audio.duration * 100 + "%";
+}
+// при клике на прогресбар можно перематывать аудиотрек
+timeline.addEventListener("click", (event) => {
+    const timelineWidth = window.getComputedStyle(timeline).width;
+    const timeToSeek = event.offsetX / parseInt(timelineWidth) * audio.duration;
+    audio.currentTime = timeToSeek;
+    progressBar.style.transition = "none";
+    progressBar.style.width = audio.currentTime / audio.duration * 100 + "%";
+})
