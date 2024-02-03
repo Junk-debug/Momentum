@@ -50,17 +50,17 @@ body {
   height: 10px;
   background-color: white;
   position: relative;
-  margin-bottom: 25px;
   cursor: pointer;
+  margin-bottom: 25px;
 }
 
 .progress {
   width: 0;
   height: 100%;
-  background-color: rgba(255, 0, 0, 0.713);
+  background-color: #FF665E;
 }
 
-.audio-time {
+.audio-duration {
   width: 100%;
   position: absolute;
   top: 20px;
@@ -72,6 +72,7 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-bottom: 15px;
 }
 
 .play-list {
@@ -106,9 +107,10 @@ body {
 
 .player-icon,
 .slider-icon,
-.change-quote {
+.change-quote,
+.volume-icon {
   width: 32px;
-  height: 32px;
+  aspect-ratio: 1;
   background-size: 32px 32px;
   background-position: center center;
   background-repeat: no-repeat;
@@ -136,7 +138,6 @@ body {
 
 .play {
   width: 54px;
-  height: 54px;
   background-size: 70px;
   background-image: url("../assets/svg/play.svg");
 }
@@ -147,16 +148,76 @@ body {
 
 .play-prev {
   width: 44px;
-  height: 44px;
   background-size: 44px 44px;
   background-image: url("../assets/svg/play-prev.svg");
 }
 
 .play-next {
   width: 44px;
-  height: 44px;
   background-size: 44px 44px;
   background-image: url("../assets/svg/play-next.svg");
+}
+
+.volume-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  column-gap: 10px;
+  align-items: center;
+}
+
+.volume-icon {
+  cursor: unset;
+  opacity: 1;
+}
+
+.volume-down {
+  background-image: url("../assets/svg/volume-down.svg");
+  transform: translateX(20%);
+}
+
+.volume-up {
+  background-image: url("../assets/svg/volume-up.svg");
+}
+
+.volume-slider {
+  width: 55%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: none;
+}
+
+.volume-slider::-webkit-slider-runnable-track {
+  height: 5px;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  margin-top: -8px;
+  width: 20px;
+  aspect-ratio: 1;
+  background: #FF665E;
+  border-radius: 10px;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+
+.volume-slider::-moz-range-track {
+  height: 5px;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.volume-container::-moz-range-thumb {
+  margin-top: -8px;
+  width: 20px;
+  aspect-ratio: 1;
+  background: #FF665E;
+  border-radius: 10px;
+  cursor: pointer;
+  -moz-appearance: none;
 }
 
 .weather {

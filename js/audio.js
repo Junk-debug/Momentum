@@ -38,6 +38,7 @@ function updateAudioList() {
 
 export function playAudio() {
     if (isPlay) {
+        progressBar.style.transition = "none";
         playAudioButton.classList.remove("pause");
         audio.pause();
         isPlay = false;
@@ -81,23 +82,29 @@ const progressBar = document.querySelector(".progress");
 const currentTimeSpan = document.querySelector(".audio-current");
 const endTimeSpan = document.querySelector(".audio-end");
 
+function getTimeCode(sec) {
+    const time = new Date(sec * 1000);
+    return `${time.getMinutes().toString().padStart(2, "0")}:${time.getSeconds().toString().padStart(2, "0")}`;
+}
+
 export function updateAudioTime() {
-    const currentTime = new Date(audio.currentTime * 1000);
-    const duration = new Date(audio.duration * 1000)
+    const currentTime = getTimeCode(audio.currentTime);
+    const duration = playList[playNum].duration;
 
-    if (currentTime >= duration) {
-        playNext();
-    }
-
-    currentTimeSpan.textContent = `${currentTime.getMinutes().toString().padStart(2, "0")}:${currentTime.getSeconds().toString().padStart(2, "0")}`;
-    endTimeSpan.textContent = `${duration.getMinutes().toString().padStart(2, "0")}:${duration.getSeconds().toString().padStart(2, "0")}`
+    currentTimeSpan.textContent = currentTime;
+    endTimeSpan.textContent = duration;
 
     updateProgressBar();
+
+    if (audio.ended) {
+        playNext()
+    }
+
     setTimeout(updateAudioTime, 500);
 }
 
 function updateProgressBar() {
-    progressBar.style.transition = "2s ease-out width";
+    progressBar.style.transition = "0.25s";
     progressBar.style.width = audio.currentTime / audio.duration * 100 + "%";
 }
 // при клике на прогресбар можно перематывать аудиотрек
@@ -108,3 +115,13 @@ timeline.addEventListener("click", (event) => {
     progressBar.style.transition = "none";
     progressBar.style.width = audio.currentTime / audio.duration * 100 + "%";
 })
+
+const volumeSlider = document.querySelector(".volume-slider");
+
+function updateVolume() {
+    audio.volume = volumeSlider.value / 100;
+}
+
+updateVolume();
+
+volumeSlider.addEventListener("input", updateVolume);
