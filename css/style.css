@@ -3,6 +3,10 @@
   src: url("../assets/fonts/Arial-MT.woff"); /* Путь к файлу со шрифтом */
  }
 
+:root {
+  --accent-color: #FF665E;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -34,6 +38,9 @@ body {
 
 .player {
   z-index: 2;
+  background-color: rgba(36, 36, 36, 0.5);
+  padding: 20px;
+  border-radius: 5px;
 }
 
 .player-controls {
@@ -57,7 +64,7 @@ body {
 .progress {
   width: 0;
   height: 100%;
-  background-color: #FF665E;
+  background-color: var(--accent-color);
 }
 
 .audio-duration {
@@ -84,31 +91,24 @@ body {
   padding: 5px;
   padding-left: 20px;
   list-style: none;
-  opacity: .8;
-  cursor: pointer;
   transition: .3s;
+  display: flex;
+  align-items: center;
 }
 
-.play-item:hover {
-  opacity: 1;
+.item-active {
+  color: var(--accent-color);
 }
 
-.play-item::before {
-  content: "\2713";  
-  position: absolute;
-  left: 0;
-  top: 2px;
-  font-weight: 900;
-}
-
-.item-active::before {
-  color: #C5B358;
+.item-active button {
+  background-color: var(--accent-color);
 }
 
 .player-icon,
 .slider-icon,
 .change-quote,
-.volume-icon {
+.volume-icon,
+.li-button {
   width: 32px;
   aspect-ratio: 1;
   background-size: 32px 32px;
@@ -124,26 +124,50 @@ body {
 
 .player-icon:hover,
 .slider-icon:hover,
-.change-quote:hover {
+.change-quote:hover,
+.volume-icon:hover,
+.li-button:hover {
   opacity: 1;
 }
 
 .player-icon:active,
 .slider-icon:active,
-.change-quote:active {
+.change-quote:active,
+.volume-icon:active,
+.li-button:active {
   border: 0;
   outline: 0;  
   transform: scale(1.1);
 }
 
+.li-button {
+  height: 35px;
+  width: 35px;
+  margin-right: 5px;
+}
+
+.li-play {
+  background-color: white;
+  mask-size: 50px;
+  mask-position: center center;
+  mask-repeat: no-repeat;
+  mask-image:  url("../assets/svg/play.svg");
+  -webkit-mask-image: url("../assets/svg/play.svg");
+}
+
 .play {
   width: 54px;
-  background-size: 70px;
-  background-image: url("../assets/svg/play.svg");
+  mask-position: center center;
+  mask-repeat: no-repeat;
+  background-color: white;
+  mask-size: 70px;
+  mask-image:  url("../assets/svg/play.svg");
+  -webkit-mask-image: url("../assets/svg/play.svg");
 }
 
 .pause {
-  background-image: url("../assets/svg/pause.svg");
+  mask-image: url("../assets/svg/pause.svg");
+  -webkit-mask-image: url("../assets/svg/pause.svg");
 }
 
 .play-prev {
@@ -166,18 +190,12 @@ body {
   align-items: center;
 }
 
-.volume-icon {
-  cursor: unset;
-  opacity: 1;
-}
-
-.volume-down {
-  background-image: url("../assets/svg/volume-down.svg");
-  transform: translateX(20%);
-}
-
 .volume-up {
   background-image: url("../assets/svg/volume-up.svg");
+}
+
+.volume-mute {
+  background-image: url("../assets/svg/volume-mute.svg");
 }
 
 .volume-slider {
@@ -198,7 +216,7 @@ body {
   margin-top: -8px;
   width: 20px;
   aspect-ratio: 1;
-  background: #FF665E;
+  background: var(--accent-color);
   border-radius: 10px;
   cursor: pointer;
   -webkit-appearance: none;
@@ -214,7 +232,7 @@ body {
   margin-top: -8px;
   width: 20px;
   aspect-ratio: 1;
-  background: #FF665E;
+  background: var(--accent-color);
   border-radius: 10px;
   cursor: pointer;
   -moz-appearance: none;

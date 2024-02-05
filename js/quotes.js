@@ -1,17 +1,14 @@
 import { getRandomNum } from "./slider.js";
+import quotes from './quotes.json' assert { type: "json" };
 
 const quoteDiv = document.querySelector(".quote");
 const authorDiv = document.querySelector(".author");
 
 export const changeQuoteButton = document.querySelector(".change-quote");
 
-export async function setQuote() {
-    const url = 'https://type.fit/api/quotes';
-    const res = await fetch(url);
-    const data = await res.json();
+export function setQuote() {
+    const random = getRandomNum(0, quotes.length - 1);
 
-    const random = getRandomNum(0, data.length - 1);
-
-    quoteDiv.textContent = data[random].text;
-    authorDiv.textContent = data[random].author;
+    quoteDiv.textContent = quotes[random].text;
+    authorDiv.textContent = quotes[random].author;
 }

@@ -16,24 +16,35 @@ export function createAudioList() {
         const li = document.createElement('li');
         li.textContent = playList[i].title;
         li.className = "play-item";
-        li.value = i;
+        const button = document.createElement('button');
+        button.value = i;
+        button.className = "li-button li-play";
+        li.prepend(button);
         audioList.append(li);
-        li.addEventListener("click", () => {
-            isPlay = false;
-            playNum = li.value;
-            resetAudio()
-            playAudio();
-        });
+        button.addEventListener("click", function() {
+            if (playNum == button.value) {
+                playAudio();
+            } else {
+                isPlay = false;
+                playNum = button.value
+                resetAudio();
+                playAudio()
+            }
+        })
     }
 }
 
 function updateAudioList() {
-    const list = document.querySelectorAll(".play-item")
-    const li = list[playNum];
+    const list = document.querySelectorAll(".play-item");
     for (const li of list) {
+        li.querySelector("button").classList.remove("pause");
         li.classList.remove("item-active");
     }
-    li.classList.add("item-active");
+    const button = list[playNum].querySelector("button");
+    list[playNum].classList.add("item-active");
+    if (isPlay) {
+        button.classList.add("pause");
+    }
 }
 
 export function playAudio() {
@@ -76,6 +87,9 @@ function resetAudio() {
     audio.src = playList[playNum].src;
 }
 
+
+
+
 const timeline = document.querySelector(".timeline");
 const progressBar = document.querySelector(".progress");
 
@@ -116,12 +130,53 @@ timeline.addEventListener("click", (event) => {
     progressBar.style.width = audio.currentTime / audio.duration * 100 + "%";
 })
 
-const volumeSlider = document.querySelector(".volume-slider");
 
-function updateVolume() {
+
+
+const volumeSlider = document.querySelector(".volume-slider");
+const volumeButton = document.querySelector(".volume-icon");
+
+function muteAudio() {
+    if (audio.muted) {
+        audio.muted = false;
+    } else {
+        audio.muted = true;
+    }
+    volumeButton.classList.toggle("volume-mute");
+}
+
+export function updateVolume() {
     audio.volume = volumeSlider.value / 100;
 }
 
-updateVolume();
+function volumeUp() {
+    audio.volume += (1 / 100);
+    volumeSlider.value++;
+}
+
+function volumeDown() {
+    audio.volume -= (1 / 100);
+    volumeSlider.value--;
+}
 
 volumeSlider.addEventListener("input", updateVolume);
+volumeButton.addEventListener("click", muteAudio);
+
+
+
+// key events
+document.addEventListener("keydown", (event) => {
+    if (event.code == "KeyM") {
+        muteAudio();
+    } else if (event.code == "KeyK") {
+        playAudio();
+    } else if (event.code == "KeyN" && event.shiftKey) {
+        playNext();
+    } else if (event.code == "KeyP" && event.shiftKey) {
+        playPrev();
+    } else if (event.code == "ArrowUp") {
+        volumeUp();
+    } else if (event.code == "ArrowDown") {
+        volumeDown();
+    }
+})
