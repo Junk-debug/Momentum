@@ -1,5 +1,6 @@
 import { inputName } from './greeting.js';
 import { inputCity } from './weather.js';
+
 export function setLocalStorage() {
     localStorage.setItem("name", inputName.value);
     localStorage.setItem("city", inputCity.value)

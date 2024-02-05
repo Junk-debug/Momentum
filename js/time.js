@@ -1,4 +1,6 @@
 import { showGreeting } from './greeting.js';
+import { dateTranslation, lang, belMonthFromNum, belDayFromNum } from './translate.js';
+
 const timeDiv = document.querySelector(".time");
 const dateDiv = document.querySelector(".date");
 
@@ -14,11 +16,17 @@ export function showTime() {
 
 function showDate() {
     const date = new Date();
+    const langOption = dateTranslation[lang];
     const options = {
         weekday: "long",
         month: "long",
         day: "numeric",
     };
-    const currentDate = date.toLocaleDateString('en-US', options);
+    let currentDate;
+    if (lang == "be") {
+        currentDate = `${belDayFromNum[date.getDay()]}, ${date.getDate()} ${belMonthFromNum[date.getMonth()]}`;
+    } else {
+        currentDate = date.toLocaleDateString(langOption, options);
+    }
     dateDiv.textContent = currentDate;
 }

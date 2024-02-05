@@ -28,7 +28,7 @@ export function createAudioList() {
                 isPlay = false;
                 playNum = button.value
                 resetAudio();
-                playAudio()
+                playAudio();
             }
         })
     }
@@ -121,6 +121,7 @@ function updateProgressBar() {
     progressBar.style.transition = "0.25s";
     progressBar.style.width = audio.currentTime / audio.duration * 100 + "%";
 }
+
 // при клике на прогресбар можно перематывать аудиотрек
 timeline.addEventListener("click", (event) => {
     const timelineWidth = window.getComputedStyle(timeline).width;
@@ -164,7 +165,7 @@ volumeButton.addEventListener("click", muteAudio);
 
 
 
-// key events
+// hotkeys
 document.addEventListener("keydown", (event) => {
     if (event.code == "KeyM") {
         muteAudio();

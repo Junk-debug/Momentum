@@ -1,9 +1,21 @@
-import { getTimeOfDay } from "./greeting.js";
-
 export const nextSlideButton = document.querySelector('.slide-next');
 export const prevSlideButton = document.querySelector('.slide-prev');
 
 let randomNum;
+
+function getTimeOfDay() {
+    const date = new Date();
+    const hours = date.getHours();
+    if (hours > 5 && hours < 12) {
+        return "morning"
+    } else if (hours > 11 && hours < 18) {
+        return "afternoon";
+    } else if (hours > 17 && hours < 24) {
+        return "evening";
+    } else {
+        return "night";
+    }
+}
 
 export function getRandomNum(min, max) {
     min = Math.ceil(min);
