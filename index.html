@@ -6,7 +6,7 @@
   <link href="assets/favicon.ico" rel="shortcut icon" />
   <link rel="stylesheet" href="css/owfont-regular.css" />
   <link rel="stylesheet" href="css/style.css" />
-  <title>momentum</title>
+  <title>Momentum</title>
   <script src="js/index.js" type="module"></script>
 </head>
 <body>
@@ -58,11 +58,104 @@
     </div>
   </main>
   <footer class="footer">
-    <button class="change-quote"></button>
-    <div>
-      <div class="quote"></div>
-      <div class="author"></div>
+    <div class="quote-container">
+      <button class="change-quote"></button>
+      <div>
+        <div class="quote"></div>
+        <div class="author"></div>
+      </div>
     </div>
+    <button class="settings-button"></button>
   </footer>
+  <div class="todo-list"></div>
+  <div class="settings-container">
+    <div class="settings">
+        <button class="settings-close"></button>
+        <div class="settings-language">
+          <span>Language</span>
+          <select name="language">
+            <option value="en">English</option>
+            <option value="ru">Russian</option>
+            <option value="be">Belorussian</option>
+          </select>
+        </div>
+        <div class="settings-photo">
+          <span>Photo source</span>
+          <select name="photo">
+            <option value="github">Github</option>
+            <option value="unsplash">Unsplash</option>
+            <option value="flickr">Flickr</option>
+          </select>
+        </div>
+        <table class="settings-hide">
+          <caption>Hidden elements</caption>
+          <tbody>
+            <tr>
+              <td>Time</td>
+              <td>
+                <label class="switch">
+                  <input type="checkbox" id="" value="time" name="toHide">
+                  <span class="slider round"></span>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>Date</td>
+              <td>
+                <label class="switch">
+                  <input type="checkbox" id="" value="date" name="toHide">
+                  <span class="slider round"></span>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>Greeting</td>
+              <td>
+                <label class="switch">
+                  <input type="checkbox" id="" value="greeting-container" name="toHide">
+                  <span class="slider round"></span>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>Quotes</td>
+              <td>
+                <label class="switch">
+                  <input type="checkbox" id="" value="quote-container" name="toHide">
+                  <span class="slider round"></span>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>Weather</td>
+              <td>
+                <label class="switch">
+                  <input type="checkbox" id="" value="weather" name="toHide">
+                  <span class="slider round"></span>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>Player</td>
+              <td>
+                <label class="switch">
+                  <input type="checkbox" id="" value="player" name="toHide">
+                  <span class="slider round"></span>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>To-Do list</td>
+              <td>
+                <label class="switch">
+                  <input type="checkbox" id="" value="todo-list" name="toHide">
+                  <span class="slider round"></span>
+                </label>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
 </body>
 </html>

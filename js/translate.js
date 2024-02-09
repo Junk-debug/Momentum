@@ -1,5 +1,3 @@
-export const lang = "be";
-
 export const greetingTranslation = {
     en: [
         "Good morning,",
@@ -86,4 +84,10 @@ export const weatherDescriptionTranslation = {
         "м/с",
         "Вільготнасць"
     ]
+}
+
+export const errorMessage = {
+    en: "City not found for",
+    ru: "Город не найден для",
+    be: "Горад не знойдзены для"
 }

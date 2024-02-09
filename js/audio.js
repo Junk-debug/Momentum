@@ -163,10 +163,7 @@ function volumeDown() {
 volumeSlider.addEventListener("input", updateVolume);
 volumeButton.addEventListener("click", muteAudio);
 
-
-
-// hotkeys
-document.addEventListener("keydown", (event) => {
+export function onKeyDownEvent(event) {
     if (event.code == "KeyM") {
         muteAudio();
     } else if (event.code == "KeyK") {
@@ -180,4 +177,14 @@ document.addEventListener("keydown", (event) => {
     } else if (event.code == "ArrowDown") {
         volumeDown();
     }
-})
+}
+
+createAudioList();
+
+playAudioButton.addEventListener("click", playAudio)
+
+nextAudioButton.addEventListener("click", playNext);
+prevAudioButton.addEventListener("click", playPrev);
+
+updateAudioTime();
+updateVolume();
