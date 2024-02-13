@@ -1,7 +1,7 @@
 import { state } from "./settings.js";
 
-export const nextSlideButton = document.querySelector('.slide-next');
-export const prevSlideButton = document.querySelector('.slide-prev');
+const nextSlideButton = document.querySelector('.slide-next');
+const prevSlideButton = document.querySelector('.slide-prev');
 
 let randomNum;
 
@@ -25,7 +25,7 @@ export function getRandomNum(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-export function setRandomNum(min, max) {
+function setRandomNum(min, max) {
     randomNum = getRandomNum(min, max);
 }
 
@@ -38,7 +38,7 @@ export async function setBg() {
     };
 }
 
-export function slideNext() {
+function slideNext() {
     randomNum++;
     if (randomNum > 20) {
         randomNum = 1;
@@ -46,7 +46,7 @@ export function slideNext() {
     setBg();
 }
 
-export function slidePrev() {
+function slidePrev() {
     randomNum--;
     if (randomNum < 1) {
         randomNum = 20;
@@ -83,4 +83,21 @@ async function setImageLink() {
         case "flickr":
             return await getLinkFromFlickr();
     }
+}
+
+function turnOnSlideClickListeners() {
+    nextSlideButton.addEventListener("click", slideNext);
+    prevSlideButton.addEventListener("click", slidePrev);
+}
+
+function turnOfSliderClickListeners() {
+    nextSlideButton.removeEventListener("click", slideNext);
+    prevSlideButton.removeEventListener("click", slidePrev);
+}
+
+export function startSliderLogic() {
+    setRandomNum(1, 20);
+    setBg();
+    turnOfSliderClickListeners();
+    turnOnSlideClickListeners();
 }

@@ -3,24 +3,24 @@ import { onKeyDownEvent } from "./audio.js";
 export const state = {
     language: "en",
     photoSource: "github",
-    blocks: [],
+    blocks: ["time", "date", "greeting-container", "quote-container", "weather", "player", "todo-list"]
 };
 
 const settingsButton = document.querySelector(".settings-button");
-const settingsContainer = document.querySelector(".settings-container");
-const closeButton = document.querySelector(".settings-close");
+export const popUpContainer = document.querySelector(".settings-container");
+export const closeButton = document.querySelector(".settings-close");
 const settings = document.querySelector(".settings-container .settings");
 
-export let isPopUpOpened = false;
+let isPopUpOpened = false;
 
 settingsButton.addEventListener("click", () => {
-    settingsContainer.classList.add("open");
+    popUpContainer.classList.add("open");
     isPopUpOpened = true;
     updateHotKeys();
 })
 
 closeButton.addEventListener("click", () => {
-    settingsContainer.classList.remove("open");
+    popUpContainer.classList.remove("open");
     isPopUpOpened = false;
     updateHotKeys();
     setSettings();
@@ -28,7 +28,7 @@ closeButton.addEventListener("click", () => {
 
 window.addEventListener("keydown", (event) => {
     if (event.key == "Escape") {
-        settingsContainer.classList.remove("open");
+        popUpContainer.classList.remove("open");
         isPopUpOpened = false;
         updateHotKeys();
         setSettings();
@@ -49,7 +49,7 @@ settings.addEventListener('click', event => {
     event._isClickWithInModal = true;
 });
 
-settingsContainer.addEventListener('click', event => {
+popUpContainer.addEventListener('click', event => {
     if (event._isClickWithInModal) return;
     event.currentTarget.classList.remove('open');
     isPopUpOpened = false;
@@ -58,7 +58,7 @@ settingsContainer.addEventListener('click', event => {
 });
 
 
-const checkboxes = document.querySelectorAll("input[name='toHide']");
+const checkboxes = document.querySelectorAll("input[name='toShow']");
 
 function getSelectedCheckboxes() {
     const selectedChekboxes = []
@@ -70,15 +70,34 @@ function getSelectedCheckboxes() {
     return selectedChekboxes;
 }
 
+function setSelectedCheckboxes() {
+    const checkboxesToSelect = state.blocks;
+    for (let checkbox of checkboxes) {
+        checkbox.checked = false;
+        if (checkboxesToSelect.includes(checkbox.value)) {
+            checkbox.checked = true;
+        }
+    }
+}
+
 const selectedLanguage = document.querySelector("select[name='language']");
 const selectedPhotoSource = document.querySelector("select[name='photo']");
+
+function setSelectElements() {
+    selectedLanguage.value = state.language;
+    selectedPhotoSource.value = state.photoSource;
+}
 
 function setSettings() {
     const blocks = getSelectedCheckboxes();
     state.blocks = blocks;
     state.language = selectedLanguage.value;
     state.photoSource = selectedPhotoSource.value;
-    console.log(state);
+}
+
+export function updateUISettings() {
+    setSelectedCheckboxes();
+    setSelectElements();
 }
 
 

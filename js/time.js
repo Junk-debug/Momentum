@@ -5,13 +5,12 @@ import { state } from './settings.js';
 const timeDiv = document.querySelector(".time");
 const dateDiv = document.querySelector(".date");
 
-export function showTime() {
+function showTime() {
     const date = new Date();
     const currentTime = date.toLocaleTimeString();
     timeDiv.textContent = currentTime;
     showDate();
     showGreeting();
-    console.log(state.language);
     setTimeout(showTime, 1000);
 }
 
@@ -32,4 +31,6 @@ function showDate() {
     dateDiv.textContent = currentDate;
 }
 
-showTime();
+export function startTimeLogic() {
+    showTime();
+}

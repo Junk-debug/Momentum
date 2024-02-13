@@ -1,22 +1,25 @@
-import { setBg } from "./slider.js";
-import { updateHiddenElements } from "./hide.js";
-import { setQuote } from "./quotes.js";
-import { getWeather } from "./weather.js";
-
+import { updateUISettings, state, closeButton, popUpContainer } from "./settings.js";
+import { startSliderLogic } from "./slider.js";
+import { startWeatherLogic, inputCity } from "./weather.js";
+import { startQuotesLogic } from "./quotes.js";
+import { updateVisibleElements } from "./hide.js";
+import { inputName } from "./greeting.js";
+import { cityPlaceholderTranslation, namePlaceholderTranslation } from "./translate.js";
 
 export function applySettings() {
-    // photo source
-    setBg();
-    // language
-    console.log("setted");
-    getWeather();
-    setQuote();
-    // hidden items
-    updateHiddenElements();
+    // settings
+    updateUISettings();
+    // visible elements
+    updateVisibleElements();
+    // photosource
+    startSliderLogic();
+    // translation
+    startWeatherLogic();
+    inputCity.placeholder = cityPlaceholderTranslation[state.language];
+    inputName.placeholder = namePlaceholderTranslation[state.language];
+    startQuotesLogic();
+    // date is translated automatically
 }
-
-const closeButton = document.querySelector(".settings-close");
-const settingsContainer = document.querySelector(".settings-container");
 
 closeButton.addEventListener("click", () => {
     applySettings();
@@ -28,7 +31,7 @@ window.addEventListener("keydown", (event) => {
     }
 })
 
-settingsContainer.addEventListener('click', event => {
+popUpContainer.addEventListener('click', event => {
     if (event._isClickWithInModal) return;
     applySettings();
 });

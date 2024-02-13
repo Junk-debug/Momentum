@@ -2,16 +2,28 @@ import playList from "./playList.js";
 
 const audio = document.querySelector("audio");
 
-export const playAudioButton = document.querySelector(".play");
-export const nextAudioButton = document.querySelector(".play-next");
-export const prevAudioButton = document.querySelector(".play-prev");
+const playAudioButton = document.querySelector(".play");
+const nextAudioButton = document.querySelector(".play-next");
+const prevAudioButton = document.querySelector(".play-prev");
+
+const volumeSlider = document.querySelector(".volume-slider");
+const volumeButton = document.querySelector(".volume-icon");
 
 const audioList = document.querySelector(".play-list");
+
+const timeline = document.querySelector(".timeline");
+const progressBar = document.querySelector(".progress");
+
+const currentTimeSpan = document.querySelector(".audio-current");
+const endTimeSpan = document.querySelector(".audio-end");
+
 
 let isPlay = false;
 let playNum = 0;
 
-export function createAudioList() {
+
+
+function createAudioList() {
     for (let i = 0; i < playList.length; i++) {
         const li = document.createElement('li');
         li.textContent = playList[i].title;
@@ -21,7 +33,7 @@ export function createAudioList() {
         button.className = "li-button li-play";
         li.prepend(button);
         audioList.append(li);
-        button.addEventListener("click", function() {
+        button.addEventListener("click", function () {
             if (playNum == button.value) {
                 playAudio();
             } else {
@@ -47,7 +59,9 @@ function updateAudioList() {
     }
 }
 
-export function playAudio() {
+
+
+function playAudio() {
     if (isPlay) {
         progressBar.style.transition = "none";
         playAudioButton.classList.remove("pause");
@@ -61,7 +75,7 @@ export function playAudio() {
     updateAudioList();
 }
 
-export function playNext() {
+function playNext() {
     isPlay = false;
     playNum++;
     if (playNum > 3) {
@@ -71,7 +85,7 @@ export function playNext() {
     playAudio();
 }
 
-export function playPrev() {
+function playPrev() {
     isPlay = false;
     playNum--;
     if (playNum < 0) {
@@ -89,19 +103,12 @@ function resetAudio() {
 
 
 
-
-const timeline = document.querySelector(".timeline");
-const progressBar = document.querySelector(".progress");
-
-const currentTimeSpan = document.querySelector(".audio-current");
-const endTimeSpan = document.querySelector(".audio-end");
-
 function getTimeCode(sec) {
     const time = new Date(sec * 1000);
     return `${time.getMinutes().toString().padStart(2, "0")}:${time.getSeconds().toString().padStart(2, "0")}`;
 }
 
-export function updateAudioTime() {
+function updateAudioTime() {
     const currentTime = getTimeCode(audio.currentTime);
     const duration = playList[playNum].duration;
 
@@ -122,20 +129,7 @@ function updateProgressBar() {
     progressBar.style.width = audio.currentTime / audio.duration * 100 + "%";
 }
 
-// при клике на прогресбар можно перематывать аудиотрек
-timeline.addEventListener("click", (event) => {
-    const timelineWidth = window.getComputedStyle(timeline).width;
-    const timeToSeek = event.offsetX / parseInt(timelineWidth) * audio.duration;
-    audio.currentTime = timeToSeek;
-    progressBar.style.transition = "none";
-    progressBar.style.width = audio.currentTime / audio.duration * 100 + "%";
-})
 
-
-
-
-const volumeSlider = document.querySelector(".volume-slider");
-const volumeButton = document.querySelector(".volume-icon");
 
 function muteAudio() {
     if (audio.muted) {
@@ -146,7 +140,7 @@ function muteAudio() {
     volumeButton.classList.toggle("volume-mute");
 }
 
-export function updateVolume() {
+function updateVolume() {
     audio.volume = volumeSlider.value / 100;
 }
 
@@ -159,9 +153,6 @@ function volumeDown() {
     audio.volume -= (1 / 100);
     volumeSlider.value--;
 }
-
-volumeSlider.addEventListener("input", updateVolume);
-volumeButton.addEventListener("click", muteAudio);
 
 export function onKeyDownEvent(event) {
     if (event.code == "KeyM") {
@@ -179,12 +170,43 @@ export function onKeyDownEvent(event) {
     }
 }
 
-createAudioList();
 
-playAudioButton.addEventListener("click", playAudio)
 
-nextAudioButton.addEventListener("click", playNext);
-prevAudioButton.addEventListener("click", playPrev);
+function turnOnAudioControlsListeners() {
+    playAudioButton.addEventListener("click", playAudio)
 
-updateAudioTime();
-updateVolume();
+    nextAudioButton.addEventListener("click", playNext);
+    prevAudioButton.addEventListener("click", playPrev);
+}
+
+
+function turnOnTimelineClickListener() {
+    timeline.addEventListener("click", (event) => {
+        const timelineWidth = window.getComputedStyle(timeline).width;
+        const timeToSeek = event.offsetX / parseInt(timelineWidth) * audio.duration;
+        audio.currentTime = timeToSeek;
+        progressBar.style.transition = "none";
+        progressBar.style.width = audio.currentTime / audio.duration * 100 + "%";
+    })
+}
+
+
+function turnOnVolumeControlsListener() {
+    volumeSlider.addEventListener("input", updateVolume);
+    volumeButton.addEventListener("click", muteAudio);
+}
+
+
+
+
+
+export function startAudioLogic() {
+    createAudioList();
+
+    turnOnAudioControlsListeners();
+    turnOnTimelineClickListener();
+    turnOnVolumeControlsListener();
+
+    updateAudioTime();
+    updateVolume();
+}

@@ -10,7 +10,7 @@ export function showGreeting() {
     greetingDiv.textContent = greetingText;
 }
 
-export function getGreeting() {
+function getGreeting() {
     const date = new Date();
     const hours = date.getHours();
     if (hours > 5 && hours < 12) {
