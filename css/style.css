@@ -1,7 +1,8 @@
 @font-face {
   font-family: 'Arial-MT';
-  src: url("../assets/fonts/Arial-MT.woff"); /* Путь к файлу со шрифтом */
- }
+  src: url("../assets/fonts/Arial-MT.woff");
+  /* Путь к файлу со шрифтом */
+}
 
 :root {
   --accent-color: #FF665E;
@@ -32,7 +33,7 @@ body {
   align-items: flex-start;
   width: 100%;
   height: 30vh;
-  min-height: 220px;  
+  min-height: 220px;
   padding: 20px;
 }
 
@@ -142,7 +143,7 @@ body {
 .settings-button:active,
 .settings-close:active {
   border: 0;
-  outline: 0;  
+  outline: 0;
   transform: scale(1.1);
 }
 
@@ -157,7 +158,7 @@ body {
   mask-size: 50px;
   mask-position: center center;
   mask-repeat: no-repeat;
-  mask-image:  url("../assets/svg/play.svg");
+  mask-image: url("../assets/svg/play.svg");
   -webkit-mask-image: url("../assets/svg/play.svg");
 }
 
@@ -167,7 +168,7 @@ body {
   mask-repeat: no-repeat;
   background-color: white;
   mask-size: 70px;
-  mask-image:  url("../assets/svg/play.svg");
+  mask-image: url("../assets/svg/play.svg");
   -webkit-mask-image: url("../assets/svg/play.svg");
 }
 
@@ -251,7 +252,7 @@ body {
   align-items: flex-start;
   row-gap: 5px;
   width: 180px;
-  min-height: 180px;  
+  min-height: 180px;
   text-align: left;
 }
 
@@ -277,14 +278,14 @@ body {
   padding: 5px;
   font-size: 20px;
   line-height: 24px;
-  color: #fff;  
+  color: #fff;
   border: 0;
   outline: 0;
   border-bottom: 1px solid #fff;
   background-color: transparent;
 }
 
-.city::placeholder {  
+.city::placeholder {
   font-size: 20px;
   color: #fff;
   opacity: .6;
@@ -298,7 +299,7 @@ body {
   align-items: center;
   width: 100%;
   height: 40vh;
-  min-height: 260px;  
+  min-height: 260px;
   padding: 20px;
 }
 
@@ -324,7 +325,7 @@ body {
   margin-bottom: 10px;
   font-family: 'Arial-MT';
   font-size: 100px;
-  letter-spacing: -4px;  
+  letter-spacing: -4px;
 }
 
 .date {
@@ -344,7 +345,7 @@ body {
 }
 
 .greeting {
-  flex: 1;  
+  flex: 1;
   padding: 10px;
   text-align: right;
 }
@@ -374,13 +375,13 @@ body {
   align-items: center;
   width: 100%;
   height: 30vh;
-  min-height: 160px;  
+  min-height: 160px;
   padding: 20px;
 }
 
 .change-quote {
   margin-bottom: 30px;
-  background-image: url("../assets/svg/reload.svg");  
+  background-image: url("../assets/svg/reload.svg");
 }
 
 .quote {
@@ -491,8 +492,17 @@ select {
   text-align: left;
 }
 
-.hidden {
+.time,
+.date,
+.greeting-container,
+.quote-container,
+.weather,
+.player,
+.todo-list {
   transition: 0.3s all ease-out;
+}
+
+.hidden {
   opacity: 0;
   position: absolute;
 }
@@ -500,7 +510,7 @@ select {
 @media (max-width: 768px) {
   .time {
     min-height: 80px;
-    font-size: 72px;    
+    font-size: 72px;
   }
 
   .greeting-container {
@@ -559,15 +569,15 @@ select {
   transition: .4s;
 }
 
-input:checked + .slider {
+input:checked+.slider {
   background-color: var(--accent-color)
 }
 
-input:focus + .slider {
+input:focus+.slider {
   box-shadow: 0 0 1px #34C759;
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);

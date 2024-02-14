@@ -90,14 +90,8 @@ function turnOnSlideClickListeners() {
     prevSlideButton.addEventListener("click", slidePrev);
 }
 
-function turnOfSliderClickListeners() {
-    nextSlideButton.removeEventListener("click", slideNext);
-    prevSlideButton.removeEventListener("click", slidePrev);
-}
-
 export function startSliderLogic() {
     setRandomNum(1, 20);
     setBg();
-    turnOfSliderClickListeners();
     turnOnSlideClickListeners();
 }

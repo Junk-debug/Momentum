@@ -13,27 +13,40 @@ const settings = document.querySelector(".settings-container .settings");
 
 let isPopUpOpened = false;
 
-settingsButton.addEventListener("click", () => {
-    popUpContainer.classList.add("open");
-    isPopUpOpened = true;
-    updateHotKeys();
-})
+function addPopUpOpenListeners() {
+    settingsButton.addEventListener("click", () => {
+        popUpContainer.classList.add("open");
+        isPopUpOpened = true;
+        updateHotKeys();
+    })
+}
 
-closeButton.addEventListener("click", () => {
-    popUpContainer.classList.remove("open");
-    isPopUpOpened = false;
-    updateHotKeys();
-    setSettings();
-})
-
-window.addEventListener("keydown", (event) => {
-    if (event.key == "Escape") {
+function addPopUpCloseListeners() {
+    closeButton.addEventListener("click", () => {
         popUpContainer.classList.remove("open");
         isPopUpOpened = false;
         updateHotKeys();
-        setSettings();
-    }
-})
+    })
+
+    window.addEventListener("keydown", (event) => {
+        if (event.key == "Escape") {
+            popUpContainer.classList.remove("open");
+            isPopUpOpened = false;
+            updateHotKeys();
+        }
+    })
+
+    settings.addEventListener('click', event => {
+        event._isClickWithInModal = true;
+    });
+
+    popUpContainer.addEventListener('click', event => {
+        if (event._isClickWithInModal) return;
+        event.currentTarget.classList.remove('open');
+        isPopUpOpened = false;
+        updateHotKeys();
+    });
+}
 
 function updateHotKeys() {
     if (!isPopUpOpened) {
@@ -43,20 +56,11 @@ function updateHotKeys() {
     }
 }
 
-updateHotKeys();
-
-settings.addEventListener('click', event => {
-    event._isClickWithInModal = true;
-});
-
-popUpContainer.addEventListener('click', event => {
-    if (event._isClickWithInModal) return;
-    event.currentTarget.classList.remove('open');
-    isPopUpOpened = false;
+export function startSettingsLogic() {
     updateHotKeys();
-    setSettings();
-});
-
+    addPopUpOpenListeners();
+    addPopUpCloseListeners();
+}
 
 const checkboxes = document.querySelectorAll("input[name='toShow']");
 
@@ -88,11 +92,21 @@ function setSelectElements() {
     selectedPhotoSource.value = state.photoSource;
 }
 
-function setSettings() {
+export function setSettings() {
     const blocks = getSelectedCheckboxes();
+    const obj = {
+        blocks: blocks,
+        language: selectedLanguage.value,
+        photoSource: selectedPhotoSource.value
+    }
+    let isLanguageSettingChanged = true;
+    if (obj.language == state.language) {
+        isLanguageSettingChanged = false;
+    }
     state.blocks = blocks;
     state.language = selectedLanguage.value;
     state.photoSource = selectedPhotoSource.value;
+    return isLanguageSettingChanged;
 }
 
 export function updateUISettings() {
@@ -104,3 +118,4 @@ export function updateUISettings() {
 
 
 
+// todo: add settings menu translation

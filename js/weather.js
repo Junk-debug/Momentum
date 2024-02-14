@@ -9,7 +9,7 @@ const humidity = document.querySelector(".humidity");
 const weatherError = document.querySelector(".weather-error");
 export const inputCity = document.querySelector(".city");
 
-async function getWeather() {
+export async function getWeather() {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputCity.value}&lang=${state.language}&appid=b1201d454068452807855ae9447aa96e&units=metric`;
     const res = await fetch(url);
     const data = await res.json();
@@ -33,7 +33,6 @@ async function getWeather() {
 
 export function startWeatherLogic() {
     inputCity.value = startCityTranslation[state.language];
-    inputCity.removeEventListener("change", getWeather);
     inputCity.addEventListener("change", getWeather);
     getWeather();
 }

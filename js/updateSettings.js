@@ -1,37 +1,40 @@
-import { updateUISettings, state, closeButton, popUpContainer } from "./settings.js";
-import { startSliderLogic } from "./slider.js";
-import { startWeatherLogic, inputCity } from "./weather.js";
-import { startQuotesLogic } from "./quotes.js";
+import { updateUISettings, state, closeButton, popUpContainer, setSettings } from "./settings.js";
+import { setBg } from "./slider.js";
+import { getWeather, inputCity } from "./weather.js";
+import { setQuote } from "./quotes.js";
 import { updateVisibleElements } from "./hide.js";
 import { inputName } from "./greeting.js";
-import { cityPlaceholderTranslation, namePlaceholderTranslation } from "./translate.js";
+import { cityPlaceholderTranslation, namePlaceholderTranslation, startCityTranslation } from "./translate.js";
 
-export function applySettings() {
+export function applySettings(isLanguageSettingChanged) {
     // settings
     updateUISettings();
     // visible elements
     updateVisibleElements();
     // photosource
-    startSliderLogic();
-    // translation
-    startWeatherLogic();
-    inputCity.placeholder = cityPlaceholderTranslation[state.language];
-    inputName.placeholder = namePlaceholderTranslation[state.language];
-    startQuotesLogic();
-    // date is translated automatically
+    setBg();
+    if (isLanguageSettingChanged) {
+        // translation
+        inputCity.value = startCityTranslation[state.language];
+        getWeather();
+        inputCity.placeholder = cityPlaceholderTranslation[state.language];
+        inputName.placeholder = namePlaceholderTranslation[state.language];
+        setQuote();
+        // date is translated automatically
+    }
 }
 
 closeButton.addEventListener("click", () => {
-    applySettings();
+    applySettings(setSettings());
 })
 
 window.addEventListener("keydown", (event) => {
     if (event.key == "Escape") {
-        applySettings();
+        applySettings(setSettings());
     }
 })
 
-popUpContainer.addEventListener('click', event => {
+popUpContainer.addEventListener('click', (event) => {
     if (event._isClickWithInModal) return;
-    applySettings();
+    applySettings(setSettings());
 });

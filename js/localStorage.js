@@ -33,7 +33,7 @@ function getSettingsFromLS() {
 
 export function startLocalSorageLogic() {
     window.addEventListener("beforeunload", setLocalStorage);
-    window.addEventListener("load", getLocalStorage);
+    window.addEventListener("load", getLocalStorage); // is it a usefull?
     getSettingsFromLS();
     applySettings();
 }
