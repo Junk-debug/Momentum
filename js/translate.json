@@ -1,0 +1,79 @@
+{
+  "en": {
+    "greetingTranslation": [
+      "Good morning,",
+      "Good afternoon,",
+      "Good evening,",
+      "Good night,"
+    ],
+    "dateTranslation": "en-US",
+    "namePlaceholderTranslation": "[Enter name]",
+    "cityPlaceholderTranslation": "[Enter city]",
+    "startCityTranslation": "Gdansk",
+    "weatherDescriptionTranslation": {
+      "windSpeed": "Wind speed",
+      "ms": "m/s",
+      "humidity": "Humidity"
+    },
+    "errorMessage": "City not found for"
+  },
+  "ru": {
+    "greetingTranslation": [
+      "Доброе утро,",
+      "Добрый день,",
+      "Добрый вечер,",
+      "Спокойной ночи,"
+    ],
+    "dateTranslation": "ru-RU",
+    "namePlaceholderTranslation": "[Введите имя]",
+    "cityPlaceholderTranslation": "[Введите город]",
+    "startCityTranslation": "Гданьск",
+    "weatherDescriptionTranslation": {
+      "windSpeed": "Скорость ветра",
+      "ms": "м/с",
+      "humidity": "Влажность"
+    },
+    "errorMessage": "Город не найден для"
+  },
+  "be": {
+    "greetingTranslation": [
+      "Добрай раніцы,",
+      "Добры дзень,",
+      "Добры вечар,",
+      "Дабранач,"
+    ],
+    "dateTranslation": "be",
+    "namePlaceholderTranslation": "[Увядзіце імя]",
+    "cityPlaceholderTranslation": "[Увядзіце горад]",
+    "startCityTranslation": "Гданьск",
+    "weatherDescriptionTranslation": {
+      "windSpeed": "Хуткасць ветра",
+      "ms": "м/с",
+      "humidity": "Вільготнасць"
+    },
+    "errorMessage": "Горад не знойдзены для",
+    "belMonthFromNum": [
+      "студзеня",
+      "лютага",
+      "сакавіка",
+      "красавік",
+      "мая",
+      "чэрвеня",
+      "ліпеня",
+      "жніўня",
+      "верасня",
+      "кастрычніка",
+      "лістапада",
+      "снежня"
+    ],
+    "belDayFromNum": [
+      "нядзеля",
+      "панядзелак",
+      "аўторак",
+      "серада",
+      "чацвер",
+      "пятніца",
+      "субота"
+    ]
+  }
+}

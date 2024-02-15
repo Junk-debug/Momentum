@@ -1,10 +1,10 @@
-import { updateUISettings, state, closeButton, popUpContainer, setSettings } from "./settings.js";
+import { updateUISettings, settings, closeButton, popUpContainer, setSettings } from "./settings.js";
 import { setBg } from "./slider.js";
 import { getWeather, inputCity } from "./weather.js";
 import { setQuote } from "./quotes.js";
 import { updateVisibleElements } from "./hide.js";
 import { inputName } from "./greeting.js";
-import { cityPlaceholderTranslation, namePlaceholderTranslation, startCityTranslation } from "./translate.js";
+import translations from './translate.json' assert { type: "json" };
 
 export function applySettings(isLanguageSettingChanged) {
     // settings
@@ -15,15 +15,22 @@ export function applySettings(isLanguageSettingChanged) {
     setBg();
     if (isLanguageSettingChanged) {
         // translation
-        inputCity.value = startCityTranslation[state.language];
+        inputCity.value = translations[settings.language].startCityTranslation;
         getWeather();
-        inputCity.placeholder = cityPlaceholderTranslation[state.language];
-        inputName.placeholder = namePlaceholderTranslation[state.language];
+        inputCity.placeholder = translations[settings.language].cityPlaceholderTranslation;
+        inputName.placeholder = translations[settings.language].namePlaceholderTranslation;
         setQuote();
         // date is translated automatically
     }
 }
 
+const settingsDiv = document.querySelector(".settings-container .settings");
+
+settingsDiv.addEventListener("input", () => {
+    applySettings(setSettings());
+});
+
+/* 
 closeButton.addEventListener("click", () => {
     applySettings(setSettings());
 })
@@ -37,4 +44,4 @@ window.addEventListener("keydown", (event) => {
 popUpContainer.addEventListener('click', (event) => {
     if (event._isClickWithInModal) return;
     applySettings(setSettings());
-});
+}); */

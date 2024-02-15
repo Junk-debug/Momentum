@@ -1,6 +1,6 @@
 import { showGreeting } from './greeting.js';
-import { dateTranslation, belMonthFromNum, belDayFromNum } from './translate.js';
-import { state } from './settings.js';
+import translations from './translate.json' assert { type: "json" };
+import { settings } from './settings.js';
 
 const timeDiv = document.querySelector(".time");
 const dateDiv = document.querySelector(".date");
@@ -16,15 +16,15 @@ function showTime() {
 
 function showDate() {
     const date = new Date();
-    const langOption = dateTranslation[state.language];
+    const langOption = translations[settings.language].dateTranslation;
     const options = {
         weekday: "long",
         month: "long",
         day: "numeric",
     };
     let currentDate;
-    if (state.language == "be") {
-        currentDate = `${belDayFromNum[date.getDay()]}, ${date.getDate()} ${belMonthFromNum[date.getMonth()]}`;
+    if (settings.language == "be") {
+        currentDate = `${translations.be.belDayFromNum[date.getDay()]}, ${date.getDate()} ${translations.be.belMonthFromNum[date.getMonth()]}`;
     } else {
         currentDate = date.toLocaleDateString(langOption, options);
     }

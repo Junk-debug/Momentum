@@ -1,12 +1,12 @@
 import { inputName } from './greeting.js';
 import { inputCity } from './weather.js';
-import { state } from './settings.js';
+import { settings } from './settings.js';
 import { applySettings } from './updateSettings.js';
 
 function setLocalStorage() {
     localStorage.setItem("name", inputName.value);
     localStorage.setItem("city", inputCity.value)
-    localStorage.setItem("state", JSON.stringify(state));
+    localStorage.setItem("state", JSON.stringify(settings));
 }
 
 function getLocalStorage() {
@@ -19,15 +19,14 @@ function getLocalStorage() {
     if (cityFromLS !== null && cityFromLS !== '') {
         inputCity.value = cityFromLS;
     }
-    
 }
 
 function getSettingsFromLS() {
     const stateFromLS = JSON.parse(localStorage.getItem("state"));
     if (stateFromLS !== null) {
-        state.blocks = stateFromLS.blocks;
-        state.language = stateFromLS.language;
-        state.photoSource = stateFromLS.photoSource;
+        settings.blocks = stateFromLS.blocks;
+        settings.language = stateFromLS.language;
+        settings.photoSource = stateFromLS.photoSource;
     }
 }
 

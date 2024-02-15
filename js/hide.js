@@ -1,9 +1,9 @@
-import { state } from "./settings.js";
+import { settings } from "./settings.js";
 
 const blocks = ["time", "date", "greeting-container", "quote-container", "weather", "player", "todo-list"];
 
 export function updateVisibleElements() {
-    const toShow = state.blocks;
+    const toShow = settings.blocks;
 
     for (let className of blocks) {
         const element = document.querySelector(`.${className}`);

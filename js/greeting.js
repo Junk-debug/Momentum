@@ -1,5 +1,5 @@
-import { state } from "./settings.js";
-import { greetingTranslation } from "./translate.js";
+import { settings } from "./settings.js";
+import translations from './translate.json' assert { type: "json" };
 
 const greetingDiv = document.querySelector(".greeting");
 export const inputName = document.querySelector(".name");
@@ -14,12 +14,12 @@ function getGreeting() {
     const date = new Date();
     const hours = date.getHours();
     if (hours > 5 && hours < 12) {
-        return greetingTranslation[state.language][0];
+        return translations[settings.language].greetingTranslation[0];
     } else if (hours > 11 && hours < 18) {
-        return greetingTranslation[state.language][1];
+        return translations[settings.language].greetingTranslation[1];
     } else if (hours > 17 && hours < 24) {
-        return greetingTranslation[state.language][2];
+        return translations[settings.language].greetingTranslation[2];
     } else {
-        return greetingTranslation[state.language][3];
+        return translations[settings.language].greetingTranslation[3];
     }
 }

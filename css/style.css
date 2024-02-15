@@ -147,6 +147,12 @@ body {
   transform: scale(1.1);
 }
 
+.settings-button.active {
+  transition: 0.5s transform;
+  transform: rotate(45deg) scale(1.1);
+  opacity: 1;
+}
+
 .li-button {
   height: 35px;
   width: 35px;

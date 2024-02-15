@@ -1,4 +1,5 @@
-import { state } from "./settings.js";
+import { settings } from "./settings.js";
+import { getRandomNum } from "./helper.js";
 
 const nextSlideButton = document.querySelector('.slide-next');
 const prevSlideButton = document.querySelector('.slide-prev');
@@ -17,12 +18,6 @@ function getTimeOfDay() {
     } else {
         return "night";
     }
-}
-
-export function getRandomNum(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 function setRandomNum(min, max) {
@@ -75,7 +70,7 @@ function getLinkFromGithub() {
 }
 
 async function setImageLink() {
-    switch (state.photoSource) {
+    switch (settings.photoSource) {
         case "github":
             return getLinkFromGithub();
         case "unsplash":
