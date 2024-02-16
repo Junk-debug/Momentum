@@ -29,19 +29,3 @@ const settingsDiv = document.querySelector(".settings-container .settings");
 settingsDiv.addEventListener("input", () => {
     applySettings(setSettings());
 });
-
-/* 
-closeButton.addEventListener("click", () => {
-    applySettings(setSettings());
-})
-
-window.addEventListener("keydown", (event) => {
-    if (event.key == "Escape") {
-        applySettings(setSettings());
-    }
-})
-
-popUpContainer.addEventListener('click', (event) => {
-    if (event._isClickWithInModal) return;
-    applySettings(setSettings());
-}); */

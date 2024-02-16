@@ -28,6 +28,7 @@ function showDate() {
     } else {
         currentDate = date.toLocaleDateString(langOption, options);
     }
+    currentDate = currentDate[0].toUpperCase() + currentDate.slice(1);
     dateDiv.textContent = currentDate;
 }
 

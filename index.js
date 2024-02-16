@@ -1,3 +1,4 @@
+import {} from './js/loader.js';
 import { startSettingsLogic } from './js/settings.js';
 import { startLocalSorageLogic } from './js/localStorage.js';
 import { startAudioLogic } from './js/audio.js';

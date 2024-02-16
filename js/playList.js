@@ -1,7 +1,7 @@
 const playList = [
     {
         title: 'Aqua Caelestis',
-        src: './assets/sounds/Aqua Caelestis.mp3',
+        src: './assets/sounds/Aqua% Caelestis.mp3',
         duration: '00:39'
     }, {
         title: 'River Flows In You',

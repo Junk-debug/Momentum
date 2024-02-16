@@ -71,6 +71,26 @@ export function startSettingsLogic() {
 
 const checkboxes = document.querySelectorAll("input[name='toShow']");
 
+/* 
+const allToggler = document.querySelector(".showAllToggler");
+
+function toggleAll() {
+    if (allToggler.checked) {
+        for (let checkbox of checkboxes) {
+            checkbox.checked = true;
+        }
+    } else {
+        for (let checkbox of checkboxes) {
+            checkbox.checked = false;
+        }
+    }
+}
+
+allToggler.addEventListener("click", toggleAll);
+allToggler.addEventListener("click", (event) => {
+    event.currentTarget.checked = true;
+}) */
+
 function getSelectedCheckboxes() {
     const selectedChekboxes = []
     for (let checkbox of checkboxes) {
@@ -125,9 +145,5 @@ export function updateUISettings() {
     setSelectedCheckboxes();
     setSelectElements();
 }
-
-
-
-
 
 // todo: add settings menu translation

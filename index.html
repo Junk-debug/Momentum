@@ -10,6 +10,12 @@
   <script src="index.js" type="module"></script>
 </head>
 <body>
+  <div class="preloader">
+    <div class="preloader__row">
+      <div class="preloader__item"></div>
+      <div class="preloader__item"></div>
+    </div>
+  </div>
   <header class="header">
     <div class="player">
       <audio src="assets/sounds/Aqua Caelestis.mp3"></audio>
@@ -94,7 +100,7 @@
               <td>Time</td>
               <td>
                 <label class="switch">
-                  <input type="checkbox" checked id="" value="time" name="toShow">
+                  <input type="checkbox" checked value="time" name="toShow">
                   <span class="slider round"></span>
                 </label>
               </td>
@@ -103,7 +109,7 @@
               <td>Date</td>
               <td>
                 <label class="switch">
-                  <input type="checkbox" checked id="" value="date" name="toShow">
+                  <input type="checkbox" checked value="date" name="toShow">
                   <span class="slider round"></span>
                 </label>
               </td>
@@ -112,7 +118,7 @@
               <td>Greeting</td>
               <td>
                 <label class="switch">
-                  <input type="checkbox" checked id="" value="greeting-container" name="toShow">
+                  <input type="checkbox" checked value="greeting-container" name="toShow">
                   <span class="slider round"></span>
                 </label>
               </td>
@@ -121,7 +127,7 @@
               <td>Quotes</td>
               <td>
                 <label class="switch">
-                  <input type="checkbox" checked id="" value="quote-container" name="toShow">
+                  <input type="checkbox" checked value="quote-container" name="toShow">
                   <span class="slider round"></span>
                 </label>
               </td>
@@ -130,7 +136,7 @@
               <td>Weather</td>
               <td>
                 <label class="switch">
-                  <input type="checkbox" checked id="" value="weather" name="toShow">
+                  <input type="checkbox" checked value="weather" name="toShow">
                   <span class="slider round"></span>
                 </label>
               </td>
@@ -139,7 +145,7 @@
               <td>Player</td>
               <td>
                 <label class="switch">
-                  <input type="checkbox" checked id="" value="player" name="toShow">
+                  <input type="checkbox" checked value="player" name="toShow">
                   <span class="slider round"></span>
                 </label>
               </td>
@@ -148,14 +154,16 @@
               <td>To-Do list</td>
               <td>
                 <label class="switch">
-                  <input type="checkbox" checked id="" value="todo-list" name="toShow">
+                  <input type="checkbox" checked value="todo-list" name="toShow">
                   <span class="slider round"></span>
                 </label>
               </td>
             </tr>
           </tbody>
         </table>
+        <button style="display: none;" class="showAllToggler">Show all</button>
     </div>
   </div>
 </body>
 </html>
+
