@@ -1,82 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="assets/favicon.ico" rel="shortcut icon" />
-  <link rel="stylesheet" href="css/owfont-regular.css" />
-  <link rel="stylesheet" href="css/style.css" />
-  <title>Momentum</title>
-  <script src="index.js" type="module"></script>
-</head>
-<body>
-  <div class="preloader">
-    <div class="preloader__row">
-      <div class="preloader__item"></div>
-      <div class="preloader__item"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="assets/favicon.ico" rel="shortcut icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/owfont-regular.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Momentum</title>
+    <script src="index.js" type="module"></script>
+  </head>
+  <body>
+    <div class="preloader">
+      <div class="preloader__row">
+        <div class="preloader__item"></div>
+        <div class="preloader__item"></div>
+      </div>
     </div>
-  </div>
-  <header class="header">
-    <div class="player">
-      <audio src="assets/sounds/Aqua Caelestis.mp3"></audio>
-      <div class="player-controls">
-        <div class="timeline">
-          <div class="progress"></div>
-          <div class="audio-duration">
-            <span class="audio-current"></span>
-            <span class="audio-end"></span>
+    <header class="header">
+      <div class="player">
+        <audio src="assets/sounds/Aqua Caelestis.mp3"></audio>
+        <div class="player-controls">
+          <div class="timeline">
+            <div class="progress"></div>
+            <div class="audio-duration">
+              <span class="audio-current"></span>
+              <span class="audio-end"></span>
+            </div>
+          </div>
+          <div class="play-buttons">
+            <button class="play-prev player-icon"></button>
+            <button class="play player-icon"></button>
+            <button class="play-next player-icon"></button>
+          </div>
+          <div class="volume-container">
+            <button class="volume-up volume-icon"></button>
+            <input
+              class="volume-slider"
+              type="range"
+              min="0"
+              max="100"
+              value="15"
+            />
           </div>
         </div>
-        <div class="play-buttons">
-          <button class="play-prev player-icon"></button>
-          <button class="play player-icon"></button>
-          <button class="play-next player-icon"></button>
+        <ul class="play-list"></ul>
+      </div>
+      <div class="weather">
+        <input type="text" class="city" value="" placeholder="[Enter city]" />
+        <i class="weather-icon owf"></i>
+        <div class="weather-error"></div>
+        <div class="description-container">
+          <span class="temperature"></span>
+          <span class="weather-description"></span>
         </div>
-        <div class="volume-container">
-          <button class="volume-up volume-icon"></button>
-          <input class="volume-slider" type="range" min="0" max="100" value="15">
+        <div class="wind"></div>
+        <div class="humidity"></div>
+      </div>
+    </header>
+    <main class="main">
+      <div class="slider-icons">
+        <button class="slide-prev slider-icon"></button>
+        <button class="slide-next slider-icon"></button>
+      </div>
+      <time class="time"></time>
+      <date class="date"></date>
+      <div class="greeting-container">
+        <span class="greeting"></span>
+        <input
+          type="text"
+          class="name"
+          spellcheck="false"
+          placeholder="[Enter name]"
+        />
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="quote-container">
+        <button class="change-quote"></button>
+        <div>
+          <div class="quote"></div>
+          <div class="author"></div>
         </div>
       </div>
-      <ul class="play-list"></ul>
-    </div>
-    <div class="weather">
-      <input type="text" class="city" value="" placeholder="[Enter city]"/>
-      <i class="weather-icon owf"></i>
-      <div class="weather-error"></div>
-      <div class="description-container">
-        <span class="temperature"></span>
-        <span class="weather-description"></span>
-      </div>
-      <div class="wind"></div>
-      <div class="humidity"></div>
-    </div>
-  </header>
-  <main class="main">
-    <div class="slider-icons">
-      <button class="slide-prev slider-icon"></button>
-      <button class="slide-next slider-icon"></button>
-    </div>
-    <time class="time"></time>
-    <date class="date"></date>
-    <div class="greeting-container">
-      <span class="greeting"></span>
-      <input type="text" class="name" placeholder="[Enter name]"/>
-    </div>
-  </main>
-  <footer class="footer">
-    <div class="quote-container">
-      <button class="change-quote"></button>
-      <div>
-        <div class="quote"></div>
-        <div class="author"></div>
-      </div>
-    </div>
-    <button class="settings-button"></button>
-  </footer>
-  <div class="todo-list"></div>
-  <div class="settings-container">
-    <div class="settings">
-        <button class="settings-close"></button>
+      <button class="settings-button"></button>
+    </footer>
+    <div class="todo-list"></div>
+    <div class="settings-container">
+      <div class="settings">
         <div class="settings-language">
           <span>Language</span>
           <select name="language">
@@ -94,76 +110,110 @@
           </select>
         </div>
         <table class="settings-hide">
-          <caption>Visible elements</caption>
+          <caption>
+            Visible elements
+          </caption>
           <tbody>
             <tr>
-              <td>Time</td>
+              <td class="label">Time</td>
               <td>
                 <label class="switch">
-                  <input type="checkbox" checked value="time" name="toShow">
+                  <input type="checkbox" checked value="time" name="toShow" />
                   <span class="slider round"></span>
                 </label>
               </td>
             </tr>
             <tr>
-              <td>Date</td>
+              <td class="label">Date</td>
               <td>
                 <label class="switch">
-                  <input type="checkbox" checked value="date" name="toShow">
+                  <input type="checkbox" checked value="date" name="toShow" />
                   <span class="slider round"></span>
                 </label>
               </td>
             </tr>
             <tr>
-              <td>Greeting</td>
+              <td class="label">Greeting</td>
               <td>
                 <label class="switch">
-                  <input type="checkbox" checked value="greeting-container" name="toShow">
+                  <input
+                    type="checkbox"
+                    checked
+                    value="greeting-container"
+                    name="toShow"
+                  />
                   <span class="slider round"></span>
                 </label>
               </td>
             </tr>
             <tr>
-              <td>Quotes</td>
+              <td class="label">Quotes</td>
               <td>
                 <label class="switch">
-                  <input type="checkbox" checked value="quote-container" name="toShow">
+                  <input
+                    type="checkbox"
+                    checked
+                    value="quote-container"
+                    name="toShow"
+                  />
                   <span class="slider round"></span>
                 </label>
               </td>
             </tr>
             <tr>
-              <td>Weather</td>
+              <td class="label">Weather</td>
               <td>
                 <label class="switch">
-                  <input type="checkbox" checked value="weather" name="toShow">
+                  <input
+                    type="checkbox"
+                    checked
+                    value="weather"
+                    name="toShow"
+                  />
                   <span class="slider round"></span>
                 </label>
               </td>
             </tr>
             <tr>
-              <td>Player</td>
+              <td class="label">Player</td>
               <td>
                 <label class="switch">
-                  <input type="checkbox" checked value="player" name="toShow">
+                  <input type="checkbox" checked value="player" name="toShow" />
                   <span class="slider round"></span>
                 </label>
               </td>
             </tr>
             <tr>
-              <td>To-Do list</td>
+              <td class="label">To-Do list</td>
               <td>
                 <label class="switch">
-                  <input type="checkbox" checked value="todo-list" name="toShow">
+                  <input
+                    type="checkbox"
+                    checked
+                    value="todo-list"
+                    name="toShow"
+                  />
                   <span class="slider round"></span>
                 </label>
               </td>
             </tr>
           </tbody>
         </table>
-        <button style="display: none;" class="showAllToggler">Show all</button>
+        <table class="settings-time">
+          <caption>Time</caption>
+          <tbody>
+            <tr>
+              <td class="label">Show seconds</td>
+              <td>
+                <label class="switch">
+                  <input type="checkbox" value="" name="showSeconds" />
+                  <span class="slider round"></span>
+                </label>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
-</body>
+  </body>
 </html>
-

@@ -17,8 +17,8 @@
 
 body {
   min-width: 480px;
-  min-height: 100vh;
-  font-family: 'Arial', sans-serif;
+  max-height: 100vh;
+  font-family: "Poppins", sans-serif;
   font-size: 16px;
   color: #fff;
   text-align: center;
@@ -39,9 +39,10 @@ body {
 
 .player {
   z-index: 2;
-  background-color: rgba(36, 36, 36, 0.5);
+  background-color: #24242480;
   padding: 20px;
   border-radius: 5px;
+  user-select: none;
 }
 
 .player-controls {
@@ -62,8 +63,11 @@ body {
   margin-bottom: 25px;
 }
 
-button, input {
+button,
+input, 
+select {
   background-color: transparent;
+  font-family: 'Poppins', sans-serif;
 }
 
 .progress {
@@ -149,6 +153,29 @@ button, input {
   border: 0;
   outline: 0;
   transform: scale(1.1);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(90deg);
+  }
+
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+.change-quote {
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+
+.change-quote.active {
+  animation: 0.3s spin linear 1;
 }
 
 .settings-button.active {
@@ -258,12 +285,13 @@ button, input {
 .weather {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: flex-start;
   row-gap: 5px;
   width: 180px;
   min-height: 180px;
   text-align: left;
+  cursor: default;
+  user-select: none;
 }
 
 .weather-error {
@@ -331,38 +359,44 @@ button, input {
 }
 
 .time {
-  min-height: 124px;
-  margin-bottom: 10px;
-  font-family: 'Arial-MT';
-  font-size: 100px;
+  font-size: 190px;
+  min-height: 170px;
+  max-height: 180px;
+  line-height: 90%;
+  margin-bottom: 20px;
   letter-spacing: -4px;
+  cursor: default;
+  user-select: none;
 }
 
 .date {
   min-height: 28px;
+  max-height: 50px;
   font-size: 24px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  cursor: default;
+  user-select: none;
 }
 
 .greeting-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: stretch;
+  justify-content: center;
   align-items: center;
-  min-height: 48px;
+  min-height: 80px;
+  max-height: 100px;
   width: 100vw;
   font-size: 40px;
 }
 
 .greeting {
-  flex: 1;
   padding: 10px;
   text-align: right;
+  cursor: default;
+  user-select: none;
 }
 
 .name {
-  flex: 1;
-  max-width: 50%;
   padding: 10px;
   font-size: 40px;
   text-align: left;
@@ -370,6 +404,13 @@ button, input {
   background-color: transparent;
   border: 0;
   outline: 0;
+  cursor: default;
+}
+
+.name:focus {
+  text-decoration: 2px underline solid white;
+  text-underline-offset: 7px;
+  cursor: text;
 }
 
 .name::placeholder {
@@ -409,40 +450,41 @@ button, input {
   aspect-ratio: 1;
   margin-right: 20px;
   margin-left: auto;
+  z-index: 1000;
 }
 
 .settings-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: end;
+  align-items: end;
   position: fixed;
   left: 0;
   top: 0;
   width: 100%;
   height: 100vh;
-  z-index: 999998;
+  z-index: 999;
   background-color: rgba(0, 0, 0, .3);
   overflow-y: auto;
   visibility: hidden;
   opacity: 0;
-  transition: opacity .6s, visibility .6s;
+  transition: opacity .5s, visibility .5s;
 }
 
 .settings {
   position: relative;
-  /* popup size */
-  width: 500px;
+  width: 450px;
   padding: 45px;
   z-index: 1;
-  margin: 30px 15px;
-  background-color: #f2f2f2;
-  backdrop-filter: blur(2px);
+  margin: 0 30px;
+  background-color: #02020260;
+  backdrop-filter: blur(2px) opacity(0);
   border-radius: 10px;
-  box-shadow: 0px 0px 17px -7px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 0px 17px -7px #24242480;
   display: flex;
   flex-direction: column;
   gap: 24px;
   color: black;
+  transition: .3s all linear;
 }
 
 .settings-close {
@@ -457,32 +499,46 @@ button, input {
 .settings-container.open {
   visibility: visible;
   opacity: 1;
+  backdrop-filter: blur(2px) opacity(1);
+}
+
+.settings-container.open .settings {
+  transform: translateY(-70px);
 }
 
 .settings-language,
 .settings-photo,
+.settings-time tbody,
 .settings-hide tbody {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 15px;
-  background-color: white;
+  background-color: #0000005e;
+  color: white;
   border-radius: 10px;
   height: 50px;
 }
 
 select {
+  font-family: 'Poppins', sans-serif;
   font-size: 16px;
-  color: #8A8A8E;
+  color: #ffffff;
 }
 
-.settings-hide tbody {
+select option {
+  text-align: end;
+}
+
+.settings-hide tbody,
+.settings-time tbody {
   flex-direction: column;
   height: unset;
   justify-content: unset;
 }
 
-.settings-hide tbody tr {
+.settings-hide tbody tr,
+.settings-time tbody tr {
   width: 100%;
   height: 50px;
   display: flex;
@@ -491,12 +547,14 @@ select {
   border-bottom: 1px solid #B9B9BB;
 }
 
-.settings-hide tbody tr:last-child {
+.settings-hide tbody tr:last-child,
+.settings-time tbody tr:last-child {
   border: none;
 }
 
-.settings-hide caption {
-  color: #8A8A8E;
+.settings-hide caption,
+.settings-time caption {
+  color: #ffffff;
   margin-bottom: 5px;
   padding-left: 10px;
   text-align: left;
@@ -509,13 +567,23 @@ select {
 .weather,
 .player,
 .todo-list {
-  transition: 0.3s all ease-out;
+  transition: .6s all ease-out;
 }
 
 .hidden {
   opacity: 0;
-  position: absolute;
+  visibility: hidden;
+  margin: 0;
 }
+
+.time.hidden,
+.date.hidden,
+.greeting-container.hidden {
+  max-height: 0;
+  min-height: 0;
+  height: 0;
+}
+
 
 @media (max-width: 768px) {
   .time {
@@ -613,7 +681,7 @@ input:checked+.slider:before {
   right: 0;
   bottom: 0;
   /* фоновый цвет элемента */
-  background: #e0e0e0;
+  background: #ffffff;
   /* размещаем блок над всеми элементами на странице (это значение должно быть больше, чем у любого другого позиционированного элемента на странице) */
   z-index: 1001;
 }
@@ -634,7 +702,7 @@ input:checked+.slider:before {
   position: absolute;
   display: inline-block;
   top: 0;
-  background-color: #337ab7;
+  background-color: var(--accent-color);
   border-radius: 100%;
   width: 35px;
   height: 35px;

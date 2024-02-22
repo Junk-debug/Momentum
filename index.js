@@ -6,17 +6,20 @@ import { startTimeLogic } from './js/time.js';
 import { startWeatherLogic } from './js/weather.js';
 import { startSliderLogic } from './js/slider.js';
 import { startQuotesLogic } from './js/quotes.js';
+import { startNameInputLogic } from './js/greeting.js';
 
 startSettingsLogic();
 //slider
 startSliderLogic();
+//quotes
+startQuotesLogic();
 // localstorage
 startLocalSorageLogic();
 // weather
 startWeatherLogic();
-//quotes
-startQuotesLogic();
 // audio
 startAudioLogic();
 // time
 startTimeLogic();
+// greeting name input
+startNameInputLogic();

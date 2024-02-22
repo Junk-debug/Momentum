@@ -15,7 +15,23 @@
       "ms": "m/s",
       "humidity": "Humidity"
     },
-    "errorMessage": "City not found for"
+    "errorMessage": "City not found for",
+    "settingsTranslations": {
+      "photoSelectLabelTranslation": "Background photo source",
+      "languageSelectOptionsTranslation": ["English", "Russian", "Belorussian"],
+      "languageSelectLabelTranslation": "Language",
+      "visibleElementsLabelTranslation": "Visible elements",
+      "visibleElementsTranslation": [
+        "Time",
+        "Date",
+        "Greeting",
+        "Quotes",
+        "Weather",
+        "Player",
+        "To-Do list"
+      ],
+      "timeFormatTranslation": "Show seconds"
+    }
   },
   "ru": {
     "greetingTranslation": [
@@ -33,7 +49,27 @@
       "ms": "м/с",
       "humidity": "Влажность"
     },
-    "errorMessage": "Город не найден для"
+    "errorMessage": "Город не найден для",
+    "settingsTranslations": {
+      "photoSelectLabelTranslation": "Источник фоновых изображений",
+      "languageSelectOptionsTranslation": [
+        "Английский",
+        "Русский",
+        "Белорусский"
+      ],
+      "languageSelectLabelTranslation": "Язык",
+      "visibleElementsLabelTranslation": "Отображаемые элементы",
+      "visibleElementsTranslation": [
+        "Время",
+        "Дата",
+        "Приветствие",
+        "Цитаты",
+        "Погода",
+        "Плеер",
+        "Список дел"
+      ],
+      "timeFormatTranslation": "Показывать секунды"
+    }
   },
   "be": {
     "greetingTranslation": [
@@ -52,6 +88,26 @@
       "humidity": "Вільготнасць"
     },
     "errorMessage": "Горад не знойдзены для",
+    "settingsTranslations": {
+      "photoSelectLabelTranslation": "Крыніца фонавых малюнкаў",
+      "languageSelectOptionsTranslation": [
+        "Англійская",
+        "Руская",
+        "Беларуская"
+      ],
+      "languageSelectLabelTranslation": "Мова",
+      "visibleElementsLabelTranslation": "Відавочныя элементы",
+      "visibleElementsTranslation": [
+        "Час",
+        "Дата",
+        "Вітанне",
+        "Цытаты",
+        "Надвор’е",
+        "Плэер",
+        "Спіс задач"
+      ],
+      "timeFormatTranslation": "Паказваць секунды"
+    },
     "belMonthFromNum": [
       "студзеня",
       "лютага",
@@ -75,5 +131,42 @@
       "пятніца",
       "субота"
     ]
+  },
+  "ua": {
+    "greetingTranslation": [
+      "Доброго ранку,",
+      "Доброго дня,",
+      "Доброго вечора,",
+      "Доброї ночі,"
+    ],
+    "dateTranslation": "uk-UA",
+    "namePlaceholderTranslation": "[Введіть ім’я]",
+    "cityPlaceholderTranslation": "[Введіть місто]",
+    "startCityTranslation": "Гданськ",
+    "weatherDescriptionTranslation": {
+      "windSpeed": "Швидкість вітру",
+      "ms": "м/с",
+      "humidity": "Вологість"
+    },
+    "errorMessage": "Місто не знайдено для",
+    "settingsTranslations": {
+      "photoSelectLabelTranslation": "Джерело фото на тлі",
+      "languageSelectOptionsTranslation": [
+        "Англійська",
+        "Російська",
+        "Білоруська"
+      ],
+      "languageSelectLabelTranslation": "Мова",
+      "visibleElementsLabelTranslation": "Видимі елементи",
+      "visibleElementsTranslation": [
+        "Час",
+        "Дата",
+        "Привітання",
+        "Цитати",
+        "Погода",
+        "Плеєр",
+        "Список справ"
+      ]
+    }
   }
 }

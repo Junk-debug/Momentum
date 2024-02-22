@@ -23,3 +23,24 @@ function getGreeting() {
         return translations[settings.language].greetingTranslation[3];
     }
 }
+
+export function adjustWidth() {
+    const inputElement = this;
+
+    // Создаем временный элемент span, чтобы измерить ширину содержимого
+    const tempSpan = document.createElement('span');
+    tempSpan.innerText = inputElement.value;
+    tempSpan.style.fontSize = window.getComputedStyle(inputElement).fontSize;
+    document.body.appendChild(tempSpan);
+
+    // Устанавливаем ширину input такую, как ширина содержимого
+    inputElement.style.width = (tempSpan.offsetWidth === 0) ? "280px" : tempSpan.offsetWidth + 25 + 'px';
+
+    // Удаляем временный элемент span
+    document.body.removeChild(tempSpan);
+}
+
+export function startNameInputLogic() {
+    window.addEventListener("load", adjustWidth.bind(inputName));
+    inputName.addEventListener("input", adjustWidth);
+}

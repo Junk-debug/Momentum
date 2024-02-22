@@ -7,11 +7,20 @@ const dateDiv = document.querySelector(".date");
 
 function showTime() {
     const date = new Date();
-    const currentTime = date.toLocaleTimeString();
+    const currentTime = (settings.showSeconds == true) ? date.toLocaleTimeString() : date.getHours().toString().padStart(2, "0") + ":" +  date.getMinutes().toString().padStart(2, "0");
+    console.error(settings);
+    if (settings.showSeconds == true) {
+        timeDiv.style.fontSize = "150px";
+        timeDiv.style.minHeight = "135px";
+        timeDiv.style.maxHeight = "140px";
+    } else {
+        timeDiv.style.fontSize = "190px";
+        timeDiv.style.minHeight = "170px";
+        timeDiv.style.maxHeight = "180px";
+    }
     timeDiv.textContent = currentTime;
     showDate();
     showGreeting();
-    setTimeout(showTime, 1000);
 }
 
 function showDate() {
@@ -33,5 +42,5 @@ function showDate() {
 }
 
 export function startTimeLogic() {
-    showTime();
+    setInterval(showTime, 500);
 }

@@ -18,9 +18,16 @@ export function setQuote() {
     authorDiv.textContent = quotes[settings.language][currentQuoteNum].author;
 }
 
+function animateQuoteButton() {
+    const animationDuration = 300;
+    changeQuoteButton.classList.add("active");
+    setTimeout(() => changeQuoteButton.classList.remove("active"), animationDuration);
+}
+
 export function startQuotesLogic() {
     setRandomQuoteNum(currentQuoteNum);
     setQuote();
     changeQuoteButton.addEventListener("click", setRandomQuoteNum.bind(null, currentQuoteNum));
     changeQuoteButton.addEventListener("click", setQuote);
+    changeQuoteButton.addEventListener("click", animateQuoteButton);
 }

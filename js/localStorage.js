@@ -6,7 +6,7 @@ import { applySettings } from './updateSettings.js';
 function setLocalStorage() {
     localStorage.setItem("name", inputName.value);
     localStorage.setItem("city", inputCity.value)
-    localStorage.setItem("state", JSON.stringify(settings));
+    localStorage.setItem("settings", JSON.stringify(settings));
 }
 
 function getLocalStorage() {
@@ -22,11 +22,12 @@ function getLocalStorage() {
 }
 
 function getSettingsFromLS() {
-    const stateFromLS = JSON.parse(localStorage.getItem("state"));
-    if (stateFromLS !== null) {
-        settings.blocks = stateFromLS.blocks;
-        settings.language = stateFromLS.language;
-        settings.photoSource = stateFromLS.photoSource;
+    const settingsFromLS = JSON.parse(localStorage.getItem("settings"));
+    if (settingsFromLS !== null) {
+        settings.blocks = settingsFromLS.blocks;
+        settings.language = settingsFromLS.language;
+        settings.photoSource = settingsFromLS.photoSource;
+        settings.showSeconds = settingsFromLS.showSeconds;
     }
 }
 
