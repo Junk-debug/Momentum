@@ -15,7 +15,6 @@ export const settings = {
 
 const settingsButton = document.querySelector(".settings-button");
 export const popUpContainer = document.querySelector(".settings-container");
-// const closeButton = document.querySelector(".settings-close");
 const settingsDiv = document.querySelector(".settings-container .settings");
 
 let isPopUpOpened = false;
@@ -59,12 +58,23 @@ function addPopUpListeners() {
     });
 }
 
-function updateHotKeys() {
-    if (!isPopUpOpened) {
-        document.addEventListener("keydown", onKeyDownEvent);
-    } else {
+const inputName = document.querySelector(".name");
+const inputCity = document.querySelector(".city");
+
+export function updateHotKeys() {
+    // если попап открыт либо если фокус на элементе либо если фокус на сити
+    if (isPopUpOpened || (document.activeElement === inputName) || (document.activeElement === inputCity)) {
         document.removeEventListener("keydown", onKeyDownEvent);
+    } else {
+        document.addEventListener("keydown", onKeyDownEvent);
     }
+}
+
+function addHotKeysListeners() {
+    inputCity.addEventListener("focus", updateHotKeys);
+    inputName.addEventListener("focus", updateHotKeys);
+    inputCity.addEventListener("blur", updateHotKeys);
+    inputName.addEventListener("blur", updateHotKeys);
 }
 
 const checkboxes = document.querySelectorAll("input[name='toShow']");
@@ -111,6 +121,13 @@ function translateSettingsUI() {
 
     const visibleElementsLabels = settingsDiv.querySelectorAll(".settings-hide .label");
 
+    const timeLabel = settingsDiv.querySelector(".settings-time caption");
+
+    const showSecondsLabel = settingsDiv.querySelector(".settings-time .label");
+
+    timeLabel.textContent = translations[settings.language].settingsTranslations.timeFormatLabelTranslation;
+    showSecondsLabel.textContent = translations[settings.language].settingsTranslations.timeFormatTranslation;
+
     languageSelectLabel.textContent = translations[settings.language].settingsTranslations.languageSelectLabelTranslation;
 
     for (let i = 0; i < languageOptions.length; i++) {
@@ -124,6 +141,7 @@ function translateSettingsUI() {
     for (let i = 0; i < visibleElementsLabels.length; i++) {
         visibleElementsLabels[i].textContent = visibleElementsTranslation[i];
     }
+
 }
 
 export function setSettings() {
@@ -142,5 +160,6 @@ export function updateSettingsUI() {
 
 export function startSettingsLogic() {
     updateHotKeys();
+    addHotKeysListeners();
     addPopUpListeners();
 }

@@ -7,3 +7,7 @@ export function getRandomNum(min, max) {
 function setRandomNum(min, max, variable) {
     variable = getRandomNum(min, max);
 }
+
+export function capitalize(str) {
+    return str[0].toUpperCase() + str.slice(1);
+}

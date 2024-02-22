@@ -1,6 +1,7 @@
 import { showGreeting } from './greeting.js';
 import translations from './translate.json' assert { type: "json" };
 import { settings } from './settings.js';
+import { capitalize } from './helper.js';
 
 const timeDiv = document.querySelector(".time");
 const dateDiv = document.querySelector(".date");
@@ -8,7 +9,6 @@ const dateDiv = document.querySelector(".date");
 function showTime() {
     const date = new Date();
     const currentTime = (settings.showSeconds == true) ? date.toLocaleTimeString() : date.getHours().toString().padStart(2, "0") + ":" +  date.getMinutes().toString().padStart(2, "0");
-    console.error(settings);
     if (settings.showSeconds == true) {
         timeDiv.style.fontSize = "150px";
         timeDiv.style.minHeight = "135px";
@@ -31,14 +31,11 @@ function showDate() {
         month: "long",
         day: "numeric",
     };
-    let currentDate;
-    if (settings.language == "be") {
-        currentDate = `${translations.be.belDayFromNum[date.getDay()]}, ${date.getDate()} ${translations.be.belMonthFromNum[date.getMonth()]}`;
-    } else {
-        currentDate = date.toLocaleDateString(langOption, options);
-    }
-    currentDate = currentDate[0].toUpperCase() + currentDate.slice(1);
-    dateDiv.textContent = currentDate;
+    const currentDate = ("dayFromNum" in translations[settings.language]) ? 
+    `${translations[settings.language].dayFromNum[date.getDay()]}, ${date.getDate()} ${translations[settings.language].monthFromNum[date.getMonth()]}`
+    :
+    date.toLocaleDateString(langOption, options);
+    dateDiv.textContent = capitalize(currentDate);
 }
 
 export function startTimeLogic() {

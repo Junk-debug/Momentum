@@ -47,5 +47,10 @@ export async function getWeather() {
 export function startWeatherLogic() {
     inputCity.value = translations[settings.language].startCityTranslation;
     inputCity.addEventListener("change", getWeather);
+    inputCity.addEventListener("keydown", (event) => {
+        if (event.key == "Enter") {
+            event.currentTarget.blur();
+        }
+    });
     getWeather();
 }

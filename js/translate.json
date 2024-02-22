@@ -18,7 +18,12 @@
     "errorMessage": "City not found for",
     "settingsTranslations": {
       "photoSelectLabelTranslation": "Background photo source",
-      "languageSelectOptionsTranslation": ["English", "Russian", "Belorussian"],
+      "languageSelectOptionsTranslation": [
+        "English",
+        "Russian",
+        "Belorussian",
+        "Ukranian"
+      ],
       "languageSelectLabelTranslation": "Language",
       "visibleElementsLabelTranslation": "Visible elements",
       "visibleElementsTranslation": [
@@ -30,6 +35,7 @@
         "Player",
         "To-Do list"
       ],
+      "timeFormatLabelTranslation": "Time",
       "timeFormatTranslation": "Show seconds"
     }
   },
@@ -51,11 +57,12 @@
     },
     "errorMessage": "Город не найден для",
     "settingsTranslations": {
-      "photoSelectLabelTranslation": "Источник фоновых изображений",
+      "photoSelectLabelTranslation": "Источник фоновых фото",
       "languageSelectOptionsTranslation": [
         "Английский",
         "Русский",
-        "Белорусский"
+        "Белорусский",
+        "Украинский"
       ],
       "languageSelectLabelTranslation": "Язык",
       "visibleElementsLabelTranslation": "Отображаемые элементы",
@@ -68,6 +75,7 @@
         "Плеер",
         "Список дел"
       ],
+      "timeFormatLabelTranslation": "Время",
       "timeFormatTranslation": "Показывать секунды"
     }
   },
@@ -93,7 +101,8 @@
       "languageSelectOptionsTranslation": [
         "Англійская",
         "Руская",
-        "Беларуская"
+        "Беларуская",
+        "Украінская"
       ],
       "languageSelectLabelTranslation": "Мова",
       "visibleElementsLabelTranslation": "Відавочныя элементы",
@@ -106,9 +115,10 @@
         "Плэер",
         "Спіс задач"
       ],
+      "timeFormatLabelTranslation": "Час",
       "timeFormatTranslation": "Паказваць секунды"
     },
-    "belMonthFromNum": [
+    "monthFromNum": [
       "студзеня",
       "лютага",
       "сакавіка",
@@ -122,7 +132,7 @@
       "лістапада",
       "снежня"
     ],
-    "belDayFromNum": [
+    "dayFromNum": [
       "нядзеля",
       "панядзелак",
       "аўторак",
@@ -135,14 +145,14 @@
   "ua": {
     "greetingTranslation": [
       "Доброго ранку,",
-      "Доброго дня,",
-      "Доброго вечора,",
-      "Доброї ночі,"
+      "Добрий день,",
+      "Добрий вечір,",
+      "Вечір добрий,"
     ],
-    "dateTranslation": "uk-UA",
-    "namePlaceholderTranslation": "[Введіть ім’я]",
+    "dateTranslation": "ua",
+    "namePlaceholderTranslation": "[Введіть ім'я]",
     "cityPlaceholderTranslation": "[Введіть місто]",
-    "startCityTranslation": "Гданськ",
+    "startCityTranslation": "Гданск",
     "weatherDescriptionTranslation": {
       "windSpeed": "Швидкість вітру",
       "ms": "м/с",
@@ -150,23 +160,49 @@
     },
     "errorMessage": "Місто не знайдено для",
     "settingsTranslations": {
-      "photoSelectLabelTranslation": "Джерело фото на тлі",
+      "photoSelectLabelTranslation": "Джерело фонових малюнків",
       "languageSelectOptionsTranslation": [
         "Англійська",
         "Російська",
-        "Білоруська"
+        "Білоруська",
+        "Українська"
       ],
       "languageSelectLabelTranslation": "Мова",
-      "visibleElementsLabelTranslation": "Видимі елементи",
+      "visibleElementsLabelTranslation": "Відображені елементи",
       "visibleElementsTranslation": [
         "Час",
         "Дата",
-        "Привітання",
+        "Вітання",
         "Цитати",
         "Погода",
-        "Плеєр",
-        "Список справ"
-      ]
-    }
+        "Програвач",
+        "Список завдань"
+      ],
+      "timeFormatLabelTranslation": "Час",
+      "timeFormatTranslation": "Показувати секунди"
+    },
+    "monthFromNum": [
+      "студзеня",
+      "лютага",
+      "сакавіка",
+      "красавіка",
+      "траўня",
+      "чэрвеня",
+      "ліпеня",
+      "жніўня",
+      "верасня",
+      "кастрычніка",
+      "лістапада",
+      "снежня"
+    ],
+    "dayFromNum": [
+      "неділя",
+      "понеділок",
+      "вівторок",
+      "середа",
+      "четвер",
+      "п'ятниця",
+      "субота"
+    ]
   }
 }
