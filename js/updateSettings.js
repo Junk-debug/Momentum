@@ -3,7 +3,8 @@ import { setBg } from "./slider.js";
 import { getWeather, inputCity } from "./weather.js";
 import { setQuote } from "./quotes.js";
 import { updateVisibleElements } from "./hide.js";
-import { inputName, adjustWidth } from "./greeting.js";
+import { inputName } from "./greeting.js";
+import { adjustWidth } from './helper.js';
 import translations from './translate.json' assert { type: "json" };
 
 export function applySettings() {
@@ -14,9 +15,9 @@ export function applySettings() {
     // photosource
     setBg();
     // translation
-    inputCity.value = translations[settings.language].startCityTranslation;
+    inputCity.value = translations[settings.language].weather.startCityTranslation;
     getWeather();
-    inputCity.placeholder = translations[settings.language].cityPlaceholderTranslation;
+    inputCity.placeholder = translations[settings.language].weather.cityPlaceholderTranslation;
     inputName.placeholder = translations[settings.language].namePlaceholderTranslation;
     setQuote();
     adjustWidth.apply(inputName);

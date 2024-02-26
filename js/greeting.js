@@ -1,5 +1,6 @@
 import { settings, updateHotKeys } from "./settings.js";
 import translations from './translate.json' assert { type: "json" };
+import { adjustWidth } from "./helper.js";
 
 const greetingDiv = document.querySelector(".greeting");
 export const inputName = document.querySelector(".name");
@@ -22,37 +23,6 @@ function getGreeting() {
     } else {
         return translations[settings.language].greetingTranslation[3];
     }
-}
-
-export function adjustWidth() {
-    const inputElement = this;
-
-    // Создаем временный элемент span, чтобы измерить ширину содержимого
-    const tempInputSpan = document.createElement('span');
-    tempInputSpan.innerText = inputElement.value;
-    tempInputSpan.style.fontSize = window.getComputedStyle(inputElement).fontSize;
-    document.body.appendChild(tempInputSpan);
-
-    const inputWidth = tempInputSpan.offsetWidth;
-
-    document.body.removeChild(tempInputSpan);
-
-    const placeholderText = inputElement.getAttribute('placeholder');
-
-    const tempPlaceholderSpan = document.createElement('span');
-    tempPlaceholderSpan.style.visibility = 'hidden';
-    tempPlaceholderSpan.style.fontSize = window.getComputedStyle(inputElement).fontSize;
-    tempPlaceholderSpan.textContent = placeholderText;
-
-    document.body.appendChild(tempPlaceholderSpan);
-
-    const placeholderWidth = tempPlaceholderSpan.getBoundingClientRect().width + 20 + "px";
-
-    document.body.removeChild(tempPlaceholderSpan);
-
-    // Устанавливаем ширину input такую, как ширина содержимого
-
-    inputElement.style.width = (inputWidth == 0) ? placeholderWidth : inputWidth + 25 + 'px';
 }
 
 export function startNameInputLogic() {

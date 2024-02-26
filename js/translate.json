@@ -8,14 +8,17 @@
     ],
     "dateTranslation": "en-US",
     "namePlaceholderTranslation": "[Enter name]",
-    "cityPlaceholderTranslation": "[Enter city]",
-    "startCityTranslation": "Gdansk",
-    "weatherDescriptionTranslation": {
-      "windSpeed": "Wind speed",
-      "ms": "m/s",
-      "humidity": "Humidity"
+    "weather": {
+      "cityPlaceholderTranslation": "[Enter city]",
+      "startCityTranslation": "Gdansk",
+      "weatherDescriptionTranslation": {
+        "windSpeed": "Wind speed",
+        "ms": "m/s",
+        "humidity": "Humidity"
+      },
+      "cityErrorMessage": "City not found for",
+      "networkErrorMessage": "Network problem"
     },
-    "errorMessage": "City not found for",
     "settingsTranslations": {
       "photoSelectLabelTranslation": "Background photo source",
       "languageSelectOptionsTranslation": [
@@ -48,14 +51,17 @@
     ],
     "dateTranslation": "ru-RU",
     "namePlaceholderTranslation": "[Введите имя]",
-    "cityPlaceholderTranslation": "[Введите город]",
-    "startCityTranslation": "Гданьск",
-    "weatherDescriptionTranslation": {
-      "windSpeed": "Скорость ветра",
-      "ms": "м/с",
-      "humidity": "Влажность"
+    "weather": {
+      "cityPlaceholderTranslation": "[Введите город]",
+      "startCityTranslation": "Гданьск",
+      "weatherDescriptionTranslation": {
+        "windSpeed": "Скорость ветра",
+        "ms": "м/с",
+        "humidity": "Влажность"
+      },
+      "cityErrorMessage": "Город не найден для",
+      "networkErrorMessage": "Проблемы с интернет соединением"
     },
-    "errorMessage": "Город не найден для",
     "settingsTranslations": {
       "photoSelectLabelTranslation": "Источник фоновых фото",
       "languageSelectOptionsTranslation": [
@@ -88,14 +94,17 @@
     ],
     "dateTranslation": "be",
     "namePlaceholderTranslation": "[Увядзіце імя]",
-    "cityPlaceholderTranslation": "[Увядзіце горад]",
-    "startCityTranslation": "Гданьск",
-    "weatherDescriptionTranslation": {
-      "windSpeed": "Хуткасць ветра",
-      "ms": "м/с",
-      "humidity": "Вільготнасць"
+    "weather": {
+      "cityPlaceholderTranslation": "[Увядзіце горад]",
+      "startCityTranslation": "Гданьск",
+      "weatherDescriptionTranslation": {
+        "windSpeed": "Хуткасць ветра",
+        "ms": "м/с",
+        "humidity": "Вільготнасць"
+      },
+      "cityErrorMessage": "Горад не знойдзены для",
+      "networkErrorMessage": "Праблемы з інтэрнэт злучэннем"
     },
-    "errorMessage": "Горад не знойдзены для",
     "settingsTranslations": {
       "photoSelectLabelTranslation": "Крыніца фонавых малюнкаў",
       "languageSelectOptionsTranslation": [
@@ -151,14 +160,17 @@
     ],
     "dateTranslation": "ua",
     "namePlaceholderTranslation": "[Введіть ім'я]",
-    "cityPlaceholderTranslation": "[Введіть місто]",
-    "startCityTranslation": "Гданск",
-    "weatherDescriptionTranslation": {
-      "windSpeed": "Швидкість вітру",
-      "ms": "м/с",
-      "humidity": "Вологість"
+    "weather": {
+      "cityPlaceholderTranslation": "[Введіть місто]",
+      "startCityTranslation": "Гданск",
+      "weatherDescriptionTranslation": {
+        "windSpeed": "Швидкість вітру",
+        "ms": "м/с",
+        "humidity": "Вологість"
+      },
+      "cityErrorMessage": "Місто не знайдено для",
+      "networkErrorMessage": "Проблеми з інтернет-з'єднанням"
     },
-    "errorMessage": "Місто не знайдено для",
     "settingsTranslations": {
       "photoSelectLabelTranslation": "Джерело фонових малюнків",
       "languageSelectOptionsTranslation": [

@@ -25,12 +25,23 @@ function setRandomNum(min, max) {
 }
 
 export async function setBg() {
-    const imageLink = await setImageLink();
     const img = new Image();
+    
+    const imageLink = await getImageLink();
+    // const nextImageLink = await getImageLink();
     img.src = imageLink;
     img.onload = () => {
         document.body.style.backgroundImage = `url('${img.src}')`;
+
     };
+    img.onerror = () => {
+        showBackgroundError();
+    }
+}
+
+function showBackgroundError() {
+    const errorDiv = document.querySelector(".background-error");
+    errorDiv.innerHTML = `<svg class="wifi-off-icon"></svg> Network problem: failed to load background image`;
 }
 
 function slideNext() {
@@ -69,7 +80,7 @@ function getLinkFromGithub() {
     return `https://raw.githubusercontent.com/Junk-debug/stage1-tasks/assets/images/${timeOfDay}/${bgNum}.webp`;
 }
 
-async function setImageLink() {
+async function getImageLink() {
     switch (settings.photoSource) {
         case "github":
             return getLinkFromGithub();

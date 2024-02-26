@@ -7,6 +7,7 @@ import { startWeatherLogic } from './js/weather.js';
 import { startSliderLogic } from './js/slider.js';
 import { startQuotesLogic } from './js/quotes.js';
 import { startNameInputLogic } from './js/greeting.js';
+import { startToDosLogic } from './js/todo.js';
 
 startSettingsLogic();
 //slider
@@ -23,3 +24,5 @@ startAudioLogic();
 startTimeLogic();
 // greeting name input
 startNameInputLogic();
+// todos
+startToDosLogic();

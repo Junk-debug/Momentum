@@ -157,6 +157,8 @@ function volumeDown() {
 export function onKeyDownEvent(event) {
     if (event.code == "KeyM") {
         muteAudio();
+    } else if (event.code == "Space") {
+        playAudio();
     } else if (event.code == "KeyK") {
         playAudio();
     } else if (event.code == "KeyN" && event.shiftKey) {
