@@ -1,4 +1,4 @@
-import { settings, updateHotKeys } from "./settings.js";
+import { settings } from "./settings.js";
 import translations from './translate.json' assert { type: "json" };
 import { adjustWidth } from "./helper.js";
 

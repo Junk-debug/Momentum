@@ -1,6 +1,5 @@
 import translations from './translate.json' assert { type: "json" };
 import { settings } from "./settings.js";
-import { adjustWidth } from './helper.js';
 
 const weatherIcon = document.querySelector(".weather-icon");
 const temperature = document.querySelector(".temperature");
@@ -53,7 +52,6 @@ export async function getWeather() {
 export function startWeatherLogic() {
     inputCity.value = translations[settings.language].weather.startCityTranslation;
     inputCity.addEventListener("change", getWeather);
-    // inputCity.addEventListener("input", adjustWidth.bind(inputCity));
     inputCity.addEventListener("keydown", (event) => {
         if (event.key == "Enter") {
             event.currentTarget.blur();
