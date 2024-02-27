@@ -136,15 +136,39 @@ export function updateBtnTranslation() {
     addToDoButton.placeholder = translations[settings.language].todoList.addTaskPlaceholderTranslation;
 }
 
-/* function filterTodos(filter) {
+function filterTodos(filter) {
     if (filter === "done") {
         return todosInfoArr.filter(todoInfo => todoInfo.done);
+    } else if (filter === "undone") {
+        return todosInfoArr.filter(todoInfo => !todoInfo.done);
+    } else if (filter === "today") {
+        return todosInfoArr.filter(todoInfo => {
+            const creationDate = new Date(todoInfo.creationDate);
+            const today = new Date();
+            return creationDate.getDate() === today.getDate() && creationDate.getMonth() === today.getMonth() && creationDate.getFullYear() === today.getFullYear();
+        })
     }
-} */
+    return todosInfoArr;
+}
+
+function removeChilds(node) {
+    while (node.firstChild) {
+        node.removeChild(node.firstChild);
+    }
+}
+
+function updateToDosGroup() {
+    const select = this;
+    const filter = select.options[select.selectedIndex].value;
+    removeChilds(todosDiv);
+    setToDos(filterTodos(filter));
+    updateEmptyList();
+}
 
 export function startToDosLogic() {
     adjustSelectWidth.apply(groupSelect);
     groupSelect.addEventListener("change", adjustSelectWidth);
+    groupSelect.addEventListener("change", updateToDosGroup);
     updateBtnTranslation()
     updateEmptyList();
     todoOpenButton.addEventListener("click", toggleTodoList);
