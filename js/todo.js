@@ -1,4 +1,6 @@
 import { setCursorToEnd, generateUUID } from "./helper.js";
+import translations from './translate.json' assert { type: "json" };
+import { settings } from "./settings.js";
 
 const todoListContainer = document.querySelector(".todo-list__container");
 const todoOpenButton = document.querySelector(".todo-list-open-button");
@@ -75,12 +77,15 @@ function deleteToDo(id) {
 function addToDo(event) {
     const container = document.querySelector(".todo-list__wrapper");
     const todo = createToDo(event.currentTarget.value, "todo#" + generateUUID());
+
     const todoInfo = {
         textContent: todo.getElementsByTagName("span")[0].textContent,
-        done: todo.getElementsByTagName("input")[0].checked
+        done: todo.getElementsByTagName("input")[0].checked,
+        id: todo.id,
+        creationDate: new Date()
     }
     todosInfoArr.push(todoInfo);
-    todoInfo.id = todo.id;
+
     appendToDo(todo);
 
     container.scrollTop = container.scrollHeight;
@@ -89,10 +94,11 @@ function addToDo(event) {
 }
 
 
-export function setToDos(arr) {
+function setToDos(arr) {
     for (let todoInfo of arr) {
         const todo = createToDo(todoInfo.textContent, todoInfo.id);
         todo.getElementsByTagName("input")[0].checked = todoInfo.done;
+        console.log(todoInfo);
         appendToDo(todo);
     }
 }
@@ -113,9 +119,12 @@ export function setToDosFromLS() {
 
 function toggleTodoList() {
     todoListContainer.classList.toggle("open");
+    todoOpenButton.classList.toggle("active");
 }
 
-function updateEmptyList() {
+export function updateEmptyList() {
+    const taskTranslation = `"${translations[settings.language].todoList.noTasksTranslation}"`;
+    todosDiv.style.setProperty('--content-text', taskTranslation);
     if (todosDiv.children.length === 0) {
         todosDiv.classList.add("empty");
     } else {
@@ -123,7 +132,12 @@ function updateEmptyList() {
     }
 }
 
+export function updateBtnTranslation() {
+    addToDoButton.placeholder = translations[settings.language].todoList.addTaskPlaceholderTranslation;
+}
+
 export function startToDosLogic() {
+    updateBtnTranslation()
     updateEmptyList();
     todoOpenButton.addEventListener("click", toggleTodoList);
     addToDoButton.addEventListener('change', addToDo);

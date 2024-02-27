@@ -5,6 +5,7 @@ import { setQuote } from "./quotes.js";
 import { updateVisibleElements } from "./hide.js";
 import { inputName } from "./greeting.js";
 import { adjustWidth } from './helper.js';
+import { updateBtnTranslation, updateEmptyList } from "./todo.js";
 import translations from './translate.json' assert { type: "json" };
 
 export function applySettings() {
@@ -18,9 +19,11 @@ export function applySettings() {
     inputCity.value = translations[settings.language].weather.startCityTranslation;
     getWeather();
     inputCity.placeholder = translations[settings.language].weather.cityPlaceholderTranslation;
-    inputName.placeholder = translations[settings.language].namePlaceholderTranslation;
+    inputName.placeholder = translations[settings.language].greeting.namePlaceholderTranslation;
     setQuote();
     adjustWidth.apply(inputName);
+    updateEmptyList();
+    updateBtnTranslation();
     // date is translated automatically
 }
 

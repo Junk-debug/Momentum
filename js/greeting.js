@@ -15,13 +15,13 @@ function getGreeting() {
     const date = new Date();
     const hours = date.getHours();
     if (hours > 5 && hours < 12) {
-        return translations[settings.language].greetingTranslation[0];
+        return translations[settings.language].greeting.greetingTranslation[0];
     } else if (hours > 11 && hours < 18) {
-        return translations[settings.language].greetingTranslation[1];
+        return translations[settings.language].greeting.greetingTranslation[1];
     } else if (hours > 17 && hours < 24) {
-        return translations[settings.language].greetingTranslation[2];
+        return translations[settings.language].greeting.greetingTranslation[2];
     } else {
-        return translations[settings.language].greetingTranslation[3];
+        return translations[settings.language].greeting.greetingTranslation[3];
     }
 }
 

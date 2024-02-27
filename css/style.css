@@ -11,7 +11,7 @@
 
 body {
   min-width: 480px;
-  max-height: 100vh;
+  height: 100vh;
   font-family: "Poppins", "Montserrat", sans-serif;
   font-size: 16px;
   color: #fff;
@@ -55,6 +55,11 @@ body {
   position: relative;
   cursor: pointer;
   margin-bottom: 25px;
+}
+
+input[type='text'],
+textarea {
+  overflow-x: scroll;
 }
 
 button,
@@ -122,7 +127,6 @@ select {
 .volume-icon,
 .li-button,
 .settings-button,
-.todo-list-open-button,
 .todo-list-open-button {
   width: 32px;
   aspect-ratio: 1;
@@ -481,7 +485,7 @@ select {
   visibility: hidden;
   position: absolute;
   padding: 10px 15px;
-  width: 250px;
+  width: 300px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -519,8 +523,12 @@ select {
   background-image: url("../assets/svg/exclamation.svg");
 } */
 
+.todo-list {
+  --content-text: "hi";
+}
+
 .todo-list.empty::after {
-  content: "There is nothing to do";
+  content: var(--content-text);
 }
 
 
@@ -528,13 +536,16 @@ select {
 .todo-list__todo {
   display: flex;
   justify-content: start;
-  align-items: center;
+  align-items: baseline;
   width: 100%;
   height: fit-content;
-  max-height: 30px;
   gap: 5px;
   user-select: none;
   cursor: default;
+}
+
+.todo-list__text {
+  text-align: left;
 }
 
 .todo-list__checkbox:checked + .todo-list__text {
@@ -561,7 +572,7 @@ select {
 .todo-list__delete-button {
   opacity: 0.3;
   visibility: hidden;
-  width: 15px;
+  min-width: 15px;
   aspect-ratio: 1;
   mask-image: url("../assets/svg/close.svg");
   background-color: black;
@@ -656,11 +667,11 @@ select {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 15px;
+  padding: 10px 15px;
   background-color: #0000005e;
   color: white;
   border-radius: 10px;
-  height: 50px;
+  min-height: 50px;
 }
 
 select {
@@ -675,6 +686,7 @@ select option {
 
 .settings-hide tbody,
 .settings-time tbody {
+  padding: 0 15px;
   flex-direction: column;
   height: unset;
   justify-content: unset;

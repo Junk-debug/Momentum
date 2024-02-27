@@ -60,10 +60,11 @@ function addPopUpListeners() {
 
 const inputName = document.querySelector(".name");
 const inputCity = document.querySelector(".city");
+const inputTodo = document.querySelector(".todo-list__add-button");
 
 export function updateHotKeys() {
-    // если попап открыт либо если фокус на элементе либо если фокус на сити
-    if (isPopUpOpened || (document.activeElement === inputName) || (document.activeElement === inputCity)) {
+    // если попап открыт либо если фокус на элементе либо если фокус на сити либо на инпуте тудушки
+    if (isPopUpOpened || (document.activeElement === inputName) || (document.activeElement === inputCity) || (document.activeElement === inputTodo)) {
         document.removeEventListener("keydown", onKeyDownEvent);
     } else {
         document.addEventListener("keydown", onKeyDownEvent);
@@ -72,9 +73,11 @@ export function updateHotKeys() {
 
 function addHotKeysListeners() {
     inputCity.addEventListener("focus", updateHotKeys);
-    inputName.addEventListener("focus", updateHotKeys);
     inputCity.addEventListener("blur", updateHotKeys);
+    inputName.addEventListener("focus", updateHotKeys);
     inputName.addEventListener("blur", updateHotKeys);
+    inputTodo.addEventListener("focus", updateHotKeys);
+    inputTodo.addEventListener("blur", updateHotKeys);
 }
 
 const checkboxes = document.querySelectorAll("input[name='toShow']");
@@ -114,10 +117,10 @@ function translateSettingsUI() {
 
     const languageSelectLabel = settingsDiv.querySelector(".settings-language span");
     const languageOptions = settingsDiv.querySelectorAll(".settings-language select option");
-    const optionTranslations = translations[settings.language].settingsTranslations.languageSelectOptionsTranslation;
+    const optionTranslations = translations[settings.language].settings.languageSelectOptionsTranslation;
 
     const visibleElementsCaption = settingsDiv.querySelector(".settings-hide caption");
-    const visibleElementsTranslation = translations[settings.language].settingsTranslations.visibleElementsTranslation;
+    const visibleElementsTranslation = translations[settings.language].settings.visibleElementsTranslation;
 
     const visibleElementsLabels = settingsDiv.querySelectorAll(".settings-hide .label");
 
@@ -125,18 +128,18 @@ function translateSettingsUI() {
 
     const showSecondsLabel = settingsDiv.querySelector(".settings-time .label");
 
-    timeLabel.textContent = translations[settings.language].settingsTranslations.timeFormatLabelTranslation;
-    showSecondsLabel.textContent = translations[settings.language].settingsTranslations.timeFormatTranslation;
+    timeLabel.textContent = translations[settings.language].settings.timeFormatLabelTranslation;
+    showSecondsLabel.textContent = translations[settings.language].settings.timeFormatTranslation;
 
-    languageSelectLabel.textContent = translations[settings.language].settingsTranslations.languageSelectLabelTranslation;
+    languageSelectLabel.textContent = translations[settings.language].settings.languageSelectLabelTranslation;
 
     for (let i = 0; i < languageOptions.length; i++) {
         languageOptions[i].textContent = optionTranslations[i];
     }
 
-    photoSelectLabel.textContent = translations[settings.language].settingsTranslations.photoSelectLabelTranslation;
+    photoSelectLabel.textContent = translations[settings.language].settings.photoSelectLabelTranslation;
 
-    visibleElementsCaption.textContent = translations[settings.language].settingsTranslations.visibleElementsLabelTranslation;
+    visibleElementsCaption.textContent = translations[settings.language].settings.visibleElementsLabelTranslation;
 
     for (let i = 0; i < visibleElementsLabels.length; i++) {
         visibleElementsLabels[i].textContent = visibleElementsTranslation[i];

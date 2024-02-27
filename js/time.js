@@ -25,14 +25,14 @@ function showTime() {
 
 function showDate() {
     const date = new Date();
-    const langOption = translations[settings.language].dateTranslation;
+    const langOption = translations[settings.language].time.dateTranslation;
     const options = {
         weekday: "long",
         month: "long",
         day: "numeric",
     };
     const currentDate = ("dayFromNum" in translations[settings.language]) ? 
-    `${translations[settings.language].dayFromNum[date.getDay()]}, ${date.getDate()} ${translations[settings.language].monthFromNum[date.getMonth()]}`
+    `${translations[settings.language].time.dayFromNum[date.getDay()]}, ${date.getDate()} ${translations[settings.language].time.monthFromNum[date.getMonth()]}`
     :
     date.toLocaleDateString(langOption, options);
     dateDiv.textContent = capitalize(currentDate);

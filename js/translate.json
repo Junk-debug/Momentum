@@ -1,13 +1,17 @@
 {
   "en": {
-    "greetingTranslation": [
-      "Good morning,",
-      "Good afternoon,",
-      "Good evening,",
-      "Good night,"
-    ],
-    "dateTranslation": "en-US",
-    "namePlaceholderTranslation": "[Enter name]",
+    "greeting": {
+      "greetingTranslation": [
+        "Good morning,",
+        "Good afternoon,",
+        "Good evening,",
+        "Good night,"
+      ],
+      "namePlaceholderTranslation": "[Enter name]"
+    },
+    "time": {
+      "dateTranslation": "en-US"
+    },
     "weather": {
       "cityPlaceholderTranslation": "[Enter city]",
       "startCityTranslation": "Gdansk",
@@ -19,12 +23,12 @@
       "cityErrorMessage": "City not found for",
       "networkErrorMessage": "Network problem"
     },
-    "settingsTranslations": {
+    "settings": {
       "photoSelectLabelTranslation": "Background photo source",
       "languageSelectOptionsTranslation": [
         "English",
         "Russian",
-        "Belorussian",
+        "Belarusian",
         "Ukranian"
       ],
       "languageSelectLabelTranslation": "Language",
@@ -40,17 +44,28 @@
       ],
       "timeFormatLabelTranslation": "Time",
       "timeFormatTranslation": "Show seconds"
+    },
+    "slider": {
+      "networkErrorMessage": "Network problem: failed to load background image"
+    },
+    "todoList": {
+      "noTasksTranslation": "There is nothing to do",
+      "addTaskPlaceholderTranslation": "Add new"
     }
   },
   "ru": {
-    "greetingTranslation": [
-      "Доброе утро,",
-      "Добрый день,",
-      "Добрый вечер,",
-      "Спокойной ночи,"
-    ],
-    "dateTranslation": "ru-RU",
-    "namePlaceholderTranslation": "[Введите имя]",
+    "greeting": {
+      "greetingTranslation": [
+        "Доброе утро,",
+        "Добрый день,",
+        "Добрый вечер,",
+        "Спокойной ночи,"
+      ],
+      "namePlaceholderTranslation": "[Введите имя]"
+    },
+    "time": {
+      "dateTranslation": "ru-RU"
+    },
     "weather": {
       "cityPlaceholderTranslation": "[Введите город]",
       "startCityTranslation": "Гданьск",
@@ -62,7 +77,7 @@
       "cityErrorMessage": "Город не найден для",
       "networkErrorMessage": "Проблемы с интернет соединением"
     },
-    "settingsTranslations": {
+    "settings": {
       "photoSelectLabelTranslation": "Источник фоновых фото",
       "languageSelectOptionsTranslation": [
         "Английский",
@@ -83,17 +98,51 @@
       ],
       "timeFormatLabelTranslation": "Время",
       "timeFormatTranslation": "Показывать секунды"
+    },
+    "slider": {
+      "networkErrorMessage": "Сетевая проблема: не удалось загрузить фоновое изображение"
+    },
+    "todoList": {
+      "noTasksTranslation": "Список задач пуст",
+      "addTaskPlaceholderTranslation": "Добавить новую задачу"
     }
   },
   "be": {
-    "greetingTranslation": [
-      "Добрай раніцы,",
-      "Добры дзень,",
-      "Добры вечар,",
-      "Дабранач,"
-    ],
-    "dateTranslation": "be",
-    "namePlaceholderTranslation": "[Увядзіце імя]",
+    "greeting": {
+      "greetingTranslation": [
+        "Добрай раніцы,",
+        "Добры дзень,",
+        "Добры вечар,",
+        "Дабранач,"
+      ],
+      "namePlaceholderTranslation": "[Увядзіце імя]"
+    },
+    "time": {
+      "dateTranslation": "be",
+      "monthFromNum": [
+        "студзеня",
+        "лютага",
+        "сакавіка",
+        "красавік",
+        "мая",
+        "чэрвеня",
+        "ліпеня",
+        "жніўня",
+        "верасня",
+        "кастрычніка",
+        "лістапада",
+        "снежня"
+      ],
+      "dayFromNum": [
+        "нядзеля",
+        "панядзелак",
+        "аўторак",
+        "серада",
+        "чацвер",
+        "пятніца",
+        "субота"
+      ]
+    },
     "weather": {
       "cityPlaceholderTranslation": "[Увядзіце горад]",
       "startCityTranslation": "Гданьск",
@@ -105,7 +154,7 @@
       "cityErrorMessage": "Горад не знойдзены для",
       "networkErrorMessage": "Праблемы з інтэрнэт злучэннем"
     },
-    "settingsTranslations": {
+    "settings": {
       "photoSelectLabelTranslation": "Крыніца фонавых малюнкаў",
       "languageSelectOptionsTranslation": [
         "Англійская",
@@ -127,39 +176,50 @@
       "timeFormatLabelTranslation": "Час",
       "timeFormatTranslation": "Паказваць секунды"
     },
-    "monthFromNum": [
-      "студзеня",
-      "лютага",
-      "сакавіка",
-      "красавік",
-      "мая",
-      "чэрвеня",
-      "ліпеня",
-      "жніўня",
-      "верасня",
-      "кастрычніка",
-      "лістапада",
-      "снежня"
-    ],
-    "dayFromNum": [
-      "нядзеля",
-      "панядзелак",
-      "аўторак",
-      "серада",
-      "чацвер",
-      "пятніца",
-      "субота"
-    ]
+    "slider": {
+      "networkErrorMessage": "Сеткавая праблема: не ўдалося загрузіць фонавы малюнак"
+    },
+    "todoList": {
+      "noTasksTranslation": "Спіс задач пусты",
+      "addTaskPlaceholderTranslation": "Дадаць новую задачу"
+    }
   },
   "ua": {
-    "greetingTranslation": [
-      "Доброго ранку,",
-      "Добрий день,",
-      "Добрий вечір,",
-      "Вечір добрий,"
-    ],
-    "dateTranslation": "ua",
-    "namePlaceholderTranslation": "[Введіть ім'я]",
+    "greeting": {
+      "greetingTranslation": [
+        "Доброго ранку,",
+        "Добрий день,",
+        "Добрий вечір,",
+        "Вечір добрий,"
+      ],
+      "namePlaceholderTranslation": "[Введіть ім'я]"
+    },
+    "time": {
+      "dateTranslation": "ua",
+      "monthFromNum": [
+        "студзеня",
+        "лютага",
+        "сакавіка",
+        "красавіка",
+        "траўня",
+        "чэрвеня",
+        "ліпеня",
+        "жніўня",
+        "верасня",
+        "кастрычніка",
+        "лістапада",
+        "снежня"
+      ],
+      "dayFromNum": [
+        "неділя",
+        "понеділок",
+        "вівторок",
+        "середа",
+        "четвер",
+        "п'ятниця",
+        "субота"
+      ]
+    },
     "weather": {
       "cityPlaceholderTranslation": "[Введіть місто]",
       "startCityTranslation": "Гданск",
@@ -171,7 +231,7 @@
       "cityErrorMessage": "Місто не знайдено для",
       "networkErrorMessage": "Проблеми з інтернет-з'єднанням"
     },
-    "settingsTranslations": {
+    "settings": {
       "photoSelectLabelTranslation": "Джерело фонових малюнків",
       "languageSelectOptionsTranslation": [
         "Англійська",
@@ -193,28 +253,12 @@
       "timeFormatLabelTranslation": "Час",
       "timeFormatTranslation": "Показувати секунди"
     },
-    "monthFromNum": [
-      "студзеня",
-      "лютага",
-      "сакавіка",
-      "красавіка",
-      "траўня",
-      "чэрвеня",
-      "ліпеня",
-      "жніўня",
-      "верасня",
-      "кастрычніка",
-      "лістапада",
-      "снежня"
-    ],
-    "dayFromNum": [
-      "неділя",
-      "понеділок",
-      "вівторок",
-      "середа",
-      "четвер",
-      "п'ятниця",
-      "субота"
-    ]
+    "slider": {
+      "networkErrorMessage": "Проблема мережі: не вдалося завантажити фонове зображення"
+    },
+    "todoList": {
+      "noTasksTranslation": "Список порожній",
+      "addTaskPlaceholderTranslation": "Додати нове завдання"
+    }
   }
 }

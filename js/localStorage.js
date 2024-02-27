@@ -1,12 +1,12 @@
 import { inputName } from './greeting.js';
-import { inputCity } from './weather.js';
+import { inputCity, isCityCorrect, getWeather } from './weather.js';
 import { settings } from './settings.js';
 import { applySettings } from './updateSettings.js';
 import { todosInfoArr, setToDosFromLS } from './todo.js';
 
 function setLocalStorage() {
     localStorage.setItem("name", inputName.value);
-    localStorage.setItem("city", inputCity.value)
+    localStorage.setItem("city", inputCity.value);
     localStorage.setItem("settings", JSON.stringify(settings));
     localStorage.setItem("todos", JSON.stringify(todosInfoArr));
 }
@@ -18,20 +18,22 @@ function getNameFromLS() {
     }
 }
 
-function getCityFromLS() {
+async function getCityFromLS() {
     const cityFromLS = localStorage.getItem("city");
-    if (cityFromLS !== null && cityFromLS !== '') {
+    const isCorrect = await isCityCorrect(cityFromLS);
+    console.log(isCorrect);
+    if (cityFromLS !== null && cityFromLS !== '' && isCorrect) {
         return cityFromLS;
     }
 }
 
 
-function setFromLS() {
+async function setFromLS() {
     const nameFromLS = getNameFromLS(); 
     if (nameFromLS) {
         inputName.value = nameFromLS;
     }
-    const cityFromLS = getCityFromLS();
+    const cityFromLS = await getCityFromLS();
     if (cityFromLS) {
         inputCity.value = cityFromLS;
     }
@@ -50,7 +52,10 @@ function setSettingsFromLS() {
 
 export function startLocalSorageLogic() {
     window.addEventListener("beforeunload", setLocalStorage);
-    window.addEventListener("load", setFromLS); // is it a usefull?
+    window.addEventListener("load", () => {
+        setFromLS();
+        getWeather();
+    }); // is it a usefull?
     setSettingsFromLS();
     applySettings();
     setToDosFromLS();

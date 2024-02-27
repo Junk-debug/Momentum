@@ -1,5 +1,6 @@
 import { settings } from "./settings.js";
 import { getRandomNum } from "./helper.js";
+import translations from './translate.json' assert { type: "json" };
 
 const nextSlideButton = document.querySelector('.slide-next');
 const prevSlideButton = document.querySelector('.slide-prev');
@@ -41,7 +42,9 @@ export async function setBg() {
 
 function showBackgroundError() {
     const errorDiv = document.querySelector(".background-error");
-    errorDiv.innerHTML = `<svg class="wifi-off-icon"></svg> Network problem: failed to load background image`;
+    const errorMessage = translations[settings.language].slider.networkErrorMessage;
+    console.error(errorMessage);
+    errorDiv.innerHTML = `<svg class="wifi-off-icon"></svg> ${errorMessage}`;
 }
 
 function slideNext() {
