@@ -28,17 +28,7 @@ function setWeatherError(error) {
     humidity.textContent = '';
 }
 
-// export let isCityCorrect = true;
-
-export async function isCityCorrect(value) {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${value}&lang=en&appid=b1201d454068452807855ae9447aa96e&units=metric`;
-    const res = await fetch(url);
-    const data = await res.json();
-    if (data.message === "city not found" || data.message === "Nothing to geocode") {
-        return false;
-    }
-    return true;
-}
+export let isCityCorrect;
 
 export async function getWeather() {
     const cityNotFoundError = `${translations[settings.language].weather.cityErrorMessage} '${inputCity.value }'!`;
@@ -47,13 +37,10 @@ export async function getWeather() {
         const res = await fetch(url);
         const data = await res.json();
         if (data.message === "city not found" || data.message === "Nothing to geocode") {
-            // isCityCorrect = false;
-            // console.log(isCityCorrect);
+            isCityCorrect = false;
             throw new Error(cityNotFoundError);
-            // тут записывать если не нашел город
-            // если ошибка то не сохранять в ls название города
-            // что если просто сначала достать из ls город а потом вызвать погоду
         }
+        isCityCorrect = true;
         setWeatherInfo(data);
     } catch(error) {
         if (error.message === "Failed to fetch") {

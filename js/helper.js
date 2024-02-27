@@ -48,6 +48,17 @@ export function adjustWidth() {
     inputElement.style.width = (inputWidth == 0) ? placeholderWidth : inputWidth + sumOfpaddings + 'px';
 }
 
+export function adjustSelectWidth() {
+    const text = this.options[this.selectedIndex].text;
+    const aux = document.createElement('select');
+    const option = document.createElement('option');
+    option.text = text;
+    aux.add(option);
+    document.body.appendChild(aux);
+    this.style.width = aux.offsetWidth + 'px';
+    document.body.removeChild(aux);
+}
+
 export function setCursorToEnd(el) {
     const range = document.createRange();
     const sel = window.getSelection();

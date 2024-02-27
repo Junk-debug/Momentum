@@ -502,6 +502,12 @@ select {
 .todo-list__header {
   font-weight: 600;
   text-align: left;
+  display: flex;
+  gap: 10px;
+}
+
+.todo-list__header select {
+  color: black;
 }
 
 .todo-list__wrapper {
@@ -678,10 +684,7 @@ select {
   font-family: "Poppins", "Montserrat", sans-serif;
   font-size: 16px;
   color: #ffffff;
-}
-
-select option {
-  text-align: end;
+  outline: 0;
 }
 
 .settings-hide tbody,

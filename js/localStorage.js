@@ -6,7 +6,11 @@ import { todosInfoArr, setToDosFromLS } from './todo.js';
 
 function setLocalStorage() {
     localStorage.setItem("name", inputName.value);
-    localStorage.setItem("city", inputCity.value);
+    if (isCityCorrect) {
+        localStorage.setItem("city", inputCity.value);
+    } else {
+        localStorage.setItem("city", "");
+    }
     localStorage.setItem("settings", JSON.stringify(settings));
     localStorage.setItem("todos", JSON.stringify(todosInfoArr));
 }
@@ -18,22 +22,20 @@ function getNameFromLS() {
     }
 }
 
-async function getCityFromLS() {
+function getCityFromLS() {
     const cityFromLS = localStorage.getItem("city");
-    const isCorrect = await isCityCorrect(cityFromLS);
-    console.log(isCorrect);
-    if (cityFromLS !== null && cityFromLS !== '' && isCorrect) {
+    if (cityFromLS !== null && cityFromLS !== '') {
         return cityFromLS;
     }
 }
 
 
-async function setFromLS() {
+function setFromLS() {
     const nameFromLS = getNameFromLS(); 
     if (nameFromLS) {
         inputName.value = nameFromLS;
     }
-    const cityFromLS = await getCityFromLS();
+    const cityFromLS = getCityFromLS();
     if (cityFromLS) {
         inputCity.value = cityFromLS;
     }

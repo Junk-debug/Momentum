@@ -1,5 +1,6 @@
 import { onKeyDownEvent } from "./audio.js";
 import translations from './translate.json' assert { type: "json" };
+import { adjustSelectWidth } from "./helper.js";
 
 export const settings = {
     language: "en",
@@ -162,6 +163,8 @@ export function updateSettingsUI() {
 
 
 export function startSettingsLogic() {
+    adjustSelectWidth.apply(languageSelectEl);
+    languageSelectEl.addEventListener("change", adjustSelectWidth);
     updateHotKeys();
     addHotKeysListeners();
     addPopUpListeners();

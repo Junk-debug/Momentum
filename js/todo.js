@@ -1,4 +1,4 @@
-import { setCursorToEnd, generateUUID } from "./helper.js";
+import { setCursorToEnd, generateUUID, adjustSelectWidth } from "./helper.js";
 import translations from './translate.json' assert { type: "json" };
 import { settings } from "./settings.js";
 
@@ -6,6 +6,7 @@ const todoListContainer = document.querySelector(".todo-list__container");
 const todoOpenButton = document.querySelector(".todo-list-open-button");
 const addToDoButton = document.querySelector(".todo-list__add-button");
 const todosDiv = document.querySelector(".todo-list");
+const groupSelect = document.querySelector("[name='todoGroups']");
 
 export let todosInfoArr = [];
 
@@ -98,7 +99,6 @@ function setToDos(arr) {
     for (let todoInfo of arr) {
         const todo = createToDo(todoInfo.textContent, todoInfo.id);
         todo.getElementsByTagName("input")[0].checked = todoInfo.done;
-        console.log(todoInfo);
         appendToDo(todo);
     }
 }
@@ -136,7 +136,15 @@ export function updateBtnTranslation() {
     addToDoButton.placeholder = translations[settings.language].todoList.addTaskPlaceholderTranslation;
 }
 
+/* function filterTodos(filter) {
+    if (filter === "done") {
+        return todosInfoArr.filter(todoInfo => todoInfo.done);
+    }
+} */
+
 export function startToDosLogic() {
+    adjustSelectWidth.apply(groupSelect);
+    groupSelect.addEventListener("change", adjustSelectWidth);
     updateBtnTranslation()
     updateEmptyList();
     todoOpenButton.addEventListener("click", toggleTodoList);

@@ -43,7 +43,6 @@ export async function setBg() {
 function showBackgroundError() {
     const errorDiv = document.querySelector(".background-error");
     const errorMessage = translations[settings.language].slider.networkErrorMessage;
-    console.error(errorMessage);
     errorDiv.innerHTML = `<svg class="wifi-off-icon"></svg> ${errorMessage}`;
 }
 
