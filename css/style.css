@@ -521,16 +521,8 @@ select {
   height: 100%;
 }
 
-/* .todo-list.empty::before {
-  width: 15px;
-  aspect-ratio: 1;
-  content: "";
-  display: inline-block;
-  background-image: url("../assets/svg/exclamation.svg");
-} */
-
 .todo-list {
-  --content-text: "hi";
+  --content-text: "";
 }
 
 .todo-list.empty::after {

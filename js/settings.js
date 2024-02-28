@@ -59,13 +59,23 @@ function addPopUpListeners() {
     });
 }
 
-const inputName = document.querySelector(".name");
-const inputCity = document.querySelector(".city");
-const inputTodo = document.querySelector(".todo-list__add-button");
+const textInputs = document.querySelectorAll("input[type='text']");
 
 export function updateHotKeys() {
-    // если попап открыт либо если фокус на элементе либо если фокус на сити либо на инпуте тудушки
-    if (isPopUpOpened || (document.activeElement === inputName) || (document.activeElement === inputCity) || (document.activeElement === inputTodo)) {
+    const contentEditable = document.querySelectorAll("[contenteditable]");
+    let isOnFocus = false;
+    for (let input of textInputs) {
+        if (document.activeElement === input) {
+            isOnFocus = true;
+        }
+    }
+    for (let span of contentEditable) {
+        if (document.activeElement === span) {
+            isOnFocus = true;
+            
+        }
+    }
+    if (isPopUpOpened || isOnFocus) {
         document.removeEventListener("keydown", onKeyDownEvent);
     } else {
         document.addEventListener("keydown", onKeyDownEvent);
@@ -73,12 +83,10 @@ export function updateHotKeys() {
 }
 
 function addHotKeysListeners() {
-    inputCity.addEventListener("focus", updateHotKeys);
-    inputCity.addEventListener("blur", updateHotKeys);
-    inputName.addEventListener("focus", updateHotKeys);
-    inputName.addEventListener("blur", updateHotKeys);
-    inputTodo.addEventListener("focus", updateHotKeys);
-    inputTodo.addEventListener("blur", updateHotKeys);
+    for (let input of textInputs) {
+        input.addEventListener("focus", updateHotKeys);
+        input.addEventListener("blur", updateHotKeys);
+    }
 }
 
 const checkboxes = document.querySelectorAll("input[name='toShow']");

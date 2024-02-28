@@ -1,6 +1,6 @@
 import { setCursorToEnd, generateUUID, adjustSelectWidth } from "./helper.js";
 import translations from './translate.json' assert { type: "json" };
-import { settings } from "./settings.js";
+import { settings, updateHotKeys } from "./settings.js";
 
 const todoListContainer = document.querySelector(".todo-list__container");
 const todoOpenButton = document.querySelector(".todo-list-open-button");
@@ -27,10 +27,26 @@ function createToDo(value, id) {
     todoDiv.appendChild(span);
     todoDiv.appendChild(closeBtn);
 
-    span.addEventListener('dblclick', editToDo);
-    span.addEventListener('blur', (event) => event.currentTarget.contentEditable = false);
+    // initialization
+    span.contentEditable = false;
+
+    todoDiv.addEventListener('dblclick', enableEditMode);
+    span.addEventListener('blur', () => {
+        const index = findToDoInfo(id);
+        applyChanges(span, todosInfoArr[index]);
+    });
+
+    span.addEventListener("focus", updateHotKeys);
+    span.addEventListener("blur", updateHotKeys);
+
+    span.addEventListener("keydown", (event) => {
+        if (event.currentTarget.textContent === "" && event.key === "Backspace") {
+            deleteToDo(event.currentTarget.parentElement.id);
+        }
+    })
 
     checkbox.addEventListener("change", updateDoneTasks);
+    checkbox.addEventListener("change", updateToDosGroup);
     closeBtn.addEventListener("click", deleteToDo.bind(null, id));
 
     todoDiv.id = id;
@@ -38,11 +54,18 @@ function createToDo(value, id) {
     return todoDiv;
 }
 
-function editToDo(event) {
-    const span = event.currentTarget;
+function enableEditMode(event) {
+    const span = event.currentTarget.querySelector("span");
     span.contentEditable = true;
     span.focus();
     setCursorToEnd(span);
+}
+
+function applyChanges(span, todoInfo) {
+    span.contentEditable = false;
+    if (span.textContent) {
+        todoInfo.textContent = span.textContent;
+    }
 }
 
 function appendToDo(todo) {
@@ -75,6 +98,10 @@ function deleteToDo(id) {
     updateEmptyList();
 }
 
+function findToDoInfo(id) {
+    return todosInfoArr.findIndex(todoInfo => todoInfo.id === id);
+}
+
 function addToDo(event) {
     const container = document.querySelector(".todo-list__wrapper");
     const todo = createToDo(event.currentTarget.value, "todo#" + generateUUID());
@@ -85,6 +112,10 @@ function addToDo(event) {
         id: todo.id,
         creationDate: new Date()
     }
+
+    const filter = groupSelect.options[groupSelect.selectedIndex].value;
+    updateToDo(filter, todo, todoInfo);
+
     todosInfoArr.push(todoInfo);
 
     appendToDo(todo);
@@ -158,21 +189,34 @@ function removeChilds(node) {
 }
 
 function updateToDosGroup() {
-    const select = this;
+    const select = groupSelect;
     const filter = select.options[select.selectedIndex].value;
     removeChilds(todosDiv);
     setToDos(filterTodos(filter));
     updateEmptyList();
 }
 
+function updateToDo(filter, todo, todoInfo) {
+    const checkbox = todo.querySelector("input[type=checkbox]");
+    if (filter === "done") {
+        checkbox.checked = true;
+        todoInfo.done = checkbox.checked;
+    }
+}
+
 export function startToDosLogic() {
     adjustSelectWidth.apply(groupSelect);
     groupSelect.addEventListener("change", adjustSelectWidth);
+
     groupSelect.addEventListener("change", updateToDosGroup);
-    updateBtnTranslation()
+
+    updateBtnTranslation();
+
     updateEmptyList();
+
     todoOpenButton.addEventListener("click", toggleTodoList);
-    addToDoButton.addEventListener('change', addToDo);
+
+    addToDoButton.addEventListener('keydown', (event) => {
+        if (event.key === "Enter") addToDo(event);
+    });
 }
-
-
