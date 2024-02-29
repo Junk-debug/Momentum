@@ -1,11 +1,11 @@
-import { updateSettingsUI, settings, setSettings } from "./settings.js";
+import { updateSettingsUI, settings, setSettings, languageSelectEl } from "./settings.js";
 import { setBg } from "./slider.js";
 import { getWeather, inputCity } from "./weather.js";
 import { setQuote } from "./quotes.js";
 import { updateVisibleElements } from "./hide.js";
 import { inputName } from "./greeting.js";
-import { adjustWidth } from './helper.js';
-import { updateBtnTranslation, updateEmptyList } from "./todo.js";
+import { adjustSelectWidth, adjustWidth } from './helper.js';
+import { updateTranslations, updateEmptyList, groupSelect } from "./todo.js";
 import translations from './translate.json' assert { type: "json" };
 
 export function applySettings() {
@@ -18,12 +18,19 @@ export function applySettings() {
     // translation
     inputCity.value = translations[settings.language].weather.startCityTranslation;
     getWeather();
+    // update inputs translations
     inputCity.placeholder = translations[settings.language].weather.cityPlaceholderTranslation;
     inputName.placeholder = translations[settings.language].greeting.namePlaceholderTranslation;
+    // update quote language
     setQuote();
-    adjustWidth.apply(inputName);
+    // todo list
     updateEmptyList();
-    updateBtnTranslation();
+    // todo translations
+    updateTranslations();
+    // adjust width
+    adjustWidth.apply(inputName);
+    adjustSelectWidth.apply(groupSelect);
+    adjustSelectWidth.apply(languageSelectEl);
     // date is translated automatically
 }
 

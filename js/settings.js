@@ -5,7 +5,7 @@ import { adjustSelectWidth } from "./helper.js";
 export const settings = {
     language: "en",
     photoSource: "github",
-    blocks: ["time", "date", "greeting-container", "quote-container", "weather", "player", "todo-list"],
+    blocks: ["time", "date", "greeting-container", "quote-container", "weather", "player", "todo-list-open-button"],
     showSeconds: false,
     set: function (property, newValue) {
         if (this[property] !== newValue) {
@@ -111,7 +111,7 @@ function setSelectedCheckboxes() {
     }
 }
 
-const languageSelectEl = document.querySelector("select[name='language']");
+export const languageSelectEl = document.querySelector("select[name='language']");
 const photoSelectEl = document.querySelector("select[name='photo']");
 const showSecondsToggler = document.querySelector("input[name='showSeconds']");
 

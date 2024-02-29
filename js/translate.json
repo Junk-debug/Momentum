@@ -50,7 +50,13 @@
     },
     "todoList": {
       "noTasksTranslation": "There is nothing to do",
-      "addTaskPlaceholderTranslation": "Add new"
+      "addTaskPlaceholderTranslation": "Add new",
+      "groupsTranslation": {
+        "all": "All",
+        "done": "Done",
+        "undone": "Undone",
+        "today": "Today"
+      }
     }
   },
   "ru": {
@@ -104,7 +110,13 @@
     },
     "todoList": {
       "noTasksTranslation": "Список задач пуст",
-      "addTaskPlaceholderTranslation": "Добавить новую задачу"
+      "addTaskPlaceholderTranslation": "Добавить новую задачу",
+      "groupsTranslation": {
+        "all": "Все",
+        "done": "Выполнено",
+        "undone": "Не выполнено",
+        "today": "Сегодня"
+      }
     }
   },
   "be": {
@@ -181,7 +193,13 @@
     },
     "todoList": {
       "noTasksTranslation": "Спіс задач пусты",
-      "addTaskPlaceholderTranslation": "Дадаць новую задачу"
+      "addTaskPlaceholderTranslation": "Дадаць новую задачу",
+      "groupsTranslation": {
+        "all": "Усе",
+        "done": "Зраблена",
+        "undone": "Незробленая",
+        "today": "Сёння"
+      }
     }
   },
   "ua": {
@@ -190,7 +208,7 @@
         "Доброго ранку,",
         "Добрий день,",
         "Добрий вечір,",
-        "Вечір добрий,"
+        "Надобраніч,"
       ],
       "namePlaceholderTranslation": "[Введіть ім'я]"
     },
@@ -258,7 +276,13 @@
     },
     "todoList": {
       "noTasksTranslation": "Список порожній",
-      "addTaskPlaceholderTranslation": "Додати нове завдання"
+      "addTaskPlaceholderTranslation": "Додати нове завдання",
+      "groupsTranslation": {
+        "all": "Всі",
+        "done": "Виконано",
+        "undone": "Не виконано",
+        "today": "Сьогодні"
+      }
     }
   }
 }

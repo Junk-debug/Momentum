@@ -1,0 +1,17 @@
+{
+  "name": "Target",
+  "description": "Analogue of the chrome extention with the name 'Momentum'",
+  "version": "1.0",
+  "manifest_version": 3,
+  "icons": {
+    "16": "assets/Favicon/favicon-16x16.png",
+    "32": "assets/Favicon/favicon-32x32.png",
+    "64": "assets/Favicon/favicon-64x64.png",
+    "128": "assets/Favicon/favicon-128x128.png"
+  },
+  "action": {},
+  "permissions": ["tabs"],
+  "background": {
+    "service_worker": "background.js"
+  }
+}

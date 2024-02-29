@@ -59,6 +59,6 @@ export function startLocalSorageLogic() {
         getWeather();
     }); // is it a usefull?
     setSettingsFromLS();
-    applySettings();
     setToDosFromLS();
+    applySettings();
 }

@@ -6,7 +6,7 @@ const todoListContainer = document.querySelector(".todo-list__container");
 const todoOpenButton = document.querySelector(".todo-list-open-button");
 const addToDoButton = document.querySelector(".todo-list__add-button");
 const todosDiv = document.querySelector(".todo-list");
-const groupSelect = document.querySelector("[name='todoGroups']");
+export const groupSelect = document.querySelector("[name='todoGroups']");
 
 export let todosInfoArr = [];
 
@@ -163,8 +163,13 @@ export function updateEmptyList() {
     }
 }
 
-export function updateBtnTranslation() {
+export function updateTranslations() {
     addToDoButton.placeholder = translations[settings.language].todoList.addTaskPlaceholderTranslation;
+    const filterOptions = todoListContainer.querySelectorAll(".todo-list__header select option");
+    const optionTranslations = translations[settings.language].todoList.groupsTranslation;
+    for (let i = 0; i < filterOptions.length; i++) {
+        filterOptions[i].textContent = optionTranslations[filterOptions[i].value];
+    }
 }
 
 function filterTodos(filter) {
@@ -210,7 +215,7 @@ export function startToDosLogic() {
 
     groupSelect.addEventListener("change", updateToDosGroup);
 
-    updateBtnTranslation();
+    updateTranslations();
 
     updateEmptyList();
 

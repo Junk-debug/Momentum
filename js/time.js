@@ -31,7 +31,7 @@ function showDate() {
         month: "long",
         day: "numeric",
     };
-    const currentDate = ("dayFromNum" in translations[settings.language]) ? 
+    const currentDate = ("dayFromNum" in translations[settings.language].time) ? 
     `${translations[settings.language].time.dayFromNum[date.getDay()]}, ${date.getDate()} ${translations[settings.language].time.monthFromNum[date.getMonth()]}`
     :
     date.toLocaleDateString(langOption, options);

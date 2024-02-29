@@ -17,7 +17,6 @@ export function adjustWidth() {
 
     const paddingLeft = window.getComputedStyle(inputElement).paddingLeft;
     const paddingRight = window.getComputedStyle(inputElement).paddingRight;
-
     const sumOfpaddings = +paddingLeft.slice(0, -2) + +paddingRight.slice(0, -2);
 
     // Создаем временный элемент span, чтобы измерить ширину содержимого
@@ -30,6 +29,7 @@ export function adjustWidth() {
 
     document.body.removeChild(tempInputSpan);
 
+    // Создаем временный элемент span, чтобы измерить ширину placeholder
     const placeholderText = inputElement.getAttribute('placeholder');
 
     const tempPlaceholderSpan = document.createElement('span');
@@ -43,27 +43,28 @@ export function adjustWidth() {
 
     document.body.removeChild(tempPlaceholderSpan);
 
-    // Устанавливаем ширину input такую, как ширина содержимого
 
-    inputElement.style.width = (inputWidth == 0) ? placeholderWidth : inputWidth + sumOfpaddings + 'px';
+    // Устанавливаем ширину input такую, как ширина содержимого
+    inputElement.style.width = (inputWidth == 0) ? placeholderWidth : (inputWidth + sumOfpaddings + 'px');
 }
 
 export function adjustSelectWidth() {
-    const text = this.options[this.selectedIndex].text;
-    const aux = document.createElement('select');
+    const select = this;
+    const text = select.options[select.selectedIndex].text;
+    const temp = document.createElement('select');
     const option = document.createElement('option');
     option.text = text;
-    aux.add(option);
-    document.body.appendChild(aux);
-    this.style.width = aux.offsetWidth + 'px';
-    document.body.removeChild(aux);
+    temp.add(option);
+    document.body.appendChild(temp);
+    select.style.width = temp.offsetWidth + 'px';
+    document.body.removeChild(temp);
 }
 
-export function setCursorToEnd(el) {
+export function setCursorToEnd(element) {
     const range = document.createRange();
     const sel = window.getSelection();
 
-    range.selectNodeContents(el);
+    range.selectNodeContents(element);
     range.collapse(false); // Устанавливаем конец диапазона
 
     sel.removeAllRanges();
