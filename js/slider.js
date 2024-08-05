@@ -81,7 +81,7 @@ async function getLinkFromFlickr() {
 function getLinkFromGithub() {
   const timeOfDay = getTimeOfDay();
   const bgNum = randomNum.toString().padStart(2, "0");
-  return `https://raw.githubusercontent.com/Junk-debug/stage1-tasks/assets/images/${timeOfDay}/${bgNum}.webp`;
+  return `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timeOfDay}/${bgNum}.jpg`;
 }
 
 async function getImageLink() {
