@@ -1,5 +1,5 @@
 import { showGreeting } from "./greeting.js";
-import translations from "./translate.json" assert { type: "json" };
+import translations from "./translate.js";
 import { settings } from "./settings.js";
 import { capitalize } from "./helper.js";
 

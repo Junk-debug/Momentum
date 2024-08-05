@@ -1,5 +1,5 @@
 import { settings } from "./settings.js";
-import translations from "./translate.json" assert { type: "json" };
+import translations from "./translate.js";
 import { adjustWidth } from "./helper.js";
 
 const greetingDiv = document.querySelector(".greeting");

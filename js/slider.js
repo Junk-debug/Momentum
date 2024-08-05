@@ -1,6 +1,6 @@
 import { settings } from "./settings.js";
 import { getRandomNum } from "./helper.js";
-import translations from "./translate.json" assert { type: "json" };
+import translations from "./translate.js";
 
 const nextSlideButton = document.querySelector(".slide-next");
 const prevSlideButton = document.querySelector(".slide-prev");

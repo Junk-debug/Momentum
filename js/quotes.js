@@ -1,6 +1,6 @@
-import quotes from "./quotes.json" assert { type: "json" };
 import { getRandomNum } from "./helper.js";
 import { settings } from "./settings.js";
+import quotes from "./quotesList.js";
 
 const quoteDiv = document.querySelector(".quote");
 const authorDiv = document.querySelector(".author");
