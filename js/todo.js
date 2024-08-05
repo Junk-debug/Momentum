@@ -42,6 +42,9 @@ function createToDo(value, id) {
     span.addEventListener("keydown", (event) => {
         if (event.currentTarget.textContent === "" && event.key === "Backspace") {
             deleteToDo(event.currentTarget.parentElement.id);
+        } else if (event.key === "Enter") {
+            const index = findToDoInfo(id);
+            applyChanges(event.currentTarget, todosInfoArr[index]);
         }
     })
 
@@ -144,8 +147,13 @@ function getToDosFromLS() {
 
 
 export function setToDosFromLS() {
+    const selectFromLS = localStorage.getItem("groupSelect");
+    if (selectFromLS !== null && selectFromLS !== '') {
+        groupSelect.value = selectFromLS;
+    }
     todosInfoArr = getToDosFromLS();
-    setToDos(todosInfoArr);
+    const filter = groupSelect.value;
+    setToDos(filterTodos(filter));
 }
 
 function toggleTodoList() {
@@ -170,6 +178,7 @@ export function updateTranslations() {
     for (let i = 0; i < filterOptions.length; i++) {
         filterOptions[i].textContent = optionTranslations[filterOptions[i].value];
     }
+    updateEmptyList()
 }
 
 function filterTodos(filter) {
@@ -211,6 +220,7 @@ function updateToDo(filter, todo, todoInfo) {
 
 export function startToDosLogic() {
     adjustSelectWidth.apply(groupSelect);
+
     groupSelect.addEventListener("change", adjustSelectWidth);
 
     groupSelect.addEventListener("change", updateToDosGroup);

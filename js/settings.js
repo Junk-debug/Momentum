@@ -111,12 +111,12 @@ function setSelectedCheckboxes() {
     }
 }
 
-export const languageSelectEl = document.querySelector("select[name='language']");
+export const languageSelect = document.querySelector("select[name='language']");
 const photoSelectEl = document.querySelector("select[name='photo']");
 const showSecondsToggler = document.querySelector("input[name='showSeconds']");
 
 function setSelectElements() {
-    languageSelectEl.value = settings.language;
+    languageSelect.value = settings.language;
     photoSelectEl.value = settings.photoSource;
     showSecondsToggler.checked = settings.showSeconds;
 }
@@ -158,7 +158,7 @@ function translateSettingsUI() {
 
 export function setSettings() {
     settings.set("blocks", getSelectedCheckboxes());
-    settings.set("language", languageSelectEl.value);
+    settings.set("language", languageSelect.value);
     settings.set("photoSource", photoSelectEl.value);
     settings.set("showSeconds", !!showSecondsToggler.checked);
 }
@@ -171,8 +171,8 @@ export function updateSettingsUI() {
 
 
 export function startSettingsLogic() {
-    adjustSelectWidth.apply(languageSelectEl);
-    languageSelectEl.addEventListener("change", adjustSelectWidth);
+    adjustSelectWidth.apply(languageSelect);
+    languageSelect.addEventListener("change", adjustSelectWidth);
     updateHotKeys();
     addHotKeysListeners();
     addPopUpListeners();
